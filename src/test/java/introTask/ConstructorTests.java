@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConstructorFractionTests {
+public class ConstructorTests {
 
     @Test
     public void constructorFieldTest() throws NoSuchFieldException, IllegalAccessException {

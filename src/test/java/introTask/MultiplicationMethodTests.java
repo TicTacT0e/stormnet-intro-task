@@ -3,7 +3,7 @@ package introTask;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MultiplicationFractionTests {
+public class MultiplicationMethodTests {
 
     @Test
     public void multiplicationCorrectTest() {
@@ -83,13 +83,11 @@ public class MultiplicationFractionTests {
     }
 
     @Test
-    public void multiplicationLimitTest() {
+    public void multiplicationOutOfRangeTest() {
         // 2 147 483 647
         Fraction fraction0 = new Fraction(2100000000);
         Fraction fraction1 = new Fraction(2000000000);
 
-        Fraction actual = fraction0.multiplication(fraction1);
-
-        System.out.println(actual.getNumerator() + " / " + actual.getDenominator());
+        fraction0.multiplication(fraction1);
     }
 }

@@ -3,7 +3,7 @@ package introTask;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class DivisionFractionTests {
+public class DivisionMethodTests {
 
     @Test
     public void divisionCorrectTest() {

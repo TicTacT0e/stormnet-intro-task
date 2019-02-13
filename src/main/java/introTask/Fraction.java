@@ -21,33 +21,65 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction multiplication(Fraction fraction) {
-        if (this.denominator <= 0 || fraction.getDenominator() <= 0)
+        if (denominator <= 0 || fraction.getDenominator() <= 0)
             throw new ArithmeticException();
 
-        Fraction result = new Fraction(this.numerator * fraction.getNumerator(),
-                this.denominator * fraction.getDenominator());
+        int resultNumerator = numerator * fraction.getNumerator();
+        int resultDenominator = denominator * fraction.getDenominator();
+
+        try {
+            if (((numerator > 0 && fraction.getNumerator() > 0) && resultNumerator < 0 ||
+                    resultNumerator < numerator || resultNumerator < fraction.getNumerator()) ||
+                    ((numerator < 0 && fraction.getNumerator() < 0) && resultNumerator < 0))
+                throw new OutOfRangeOfDataTypeException("Out of range of data type");
+            if (((denominator > 0 && fraction.getDenominator() > 0) && resultDenominator < 0 ||
+                    resultDenominator < denominator || resultDenominator < fraction.getDenominator()) ||
+                    ((denominator < 0 && fraction.getDenominator() < 0) && resultDenominator < 0))
+                throw new OutOfRangeOfDataTypeException("Out of range of data type");
+            if (((numerator > 0 && fraction.getNumerator() < 0) && resultNumerator > 0 ||
+                    resultNumerator > fraction.getNumerator() || resultNumerator > numerator))
+                throw new OutOfRangeOfDataTypeException("Out of range of data type");
+        } catch (OutOfRangeOfDataTypeException ex) {
+            ex.printStackTrace();
+        }
+
+        Fraction result = new Fraction(resultNumerator, resultDenominator);
         simplify(result);
         return result;
     }
 
     public Fraction add(Fraction fraction) {
-        if (this.denominator <= 0 || fraction.getDenominator() <= 0)
+        if (denominator <= 0 || fraction.getDenominator() <= 0)
             throw new ArithmeticException();
 
-        Fraction result = new Fraction(this.numerator * fraction.getDenominator() +
-                fraction.getNumerator() * this.denominator,
-                this.denominator * fraction.getDenominator());
+        int resultNumerator = numerator * fraction.getDenominator() + fraction.getNumerator() * denominator;
+        int resultDenominator = denominator * fraction.getDenominator();
+
+        try {
+            if (((numerator * fraction.getDenominator()) > 0 && (fraction.getNumerator() * denominator) > 0) &&
+                    resultNumerator < 0)
+                throw new OutOfRangeOfDataTypeException("Out-of-range-of-data-type");
+            if ((denominator > 0 && fraction.getDenominator() > 0) && resultDenominator < 0)
+                throw new OutOfRangeOfDataTypeException("Out-of-range-of-data-type");
+            if (((numerator * fraction.getDenominator()) < 0 && (fraction.getNumerator() * denominator) < 0) &&
+                    resultNumerator > 0)
+                throw new OutOfRangeOfDataTypeException("Out-of-range-of-data-type");
+        } catch (OutOfRangeOfDataTypeException ex) {
+            ex.printStackTrace();
+        }
+
+        Fraction result = new Fraction(resultNumerator, resultDenominator);
         simplify(result);
         return result;
     }
 
     public Fraction division(Fraction fraction) {
-        if (this.denominator <= 0 || fraction.getDenominator() <= 0 ||
+        if (denominator <= 0 || fraction.getDenominator() <= 0 ||
                 fraction.getNumerator() == 0)
             throw new ArithmeticException();
 
-        int resultNumerator = this.numerator * fraction.getDenominator();
-        int resultDenominator = this.denominator * fraction.getNumerator();
+        int resultNumerator = numerator * fraction.getDenominator();
+        int resultDenominator = denominator * fraction.getNumerator();
         if (resultDenominator < 0) {
             resultDenominator *= -1;
             resultNumerator *= -1;
@@ -58,16 +90,16 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction subtraction(Fraction fraction) {
-        if (this.denominator <= 0 || fraction.getDenominator() <= 0)
+        if (denominator <= 0 || fraction.getDenominator() <= 0)
             throw new ArithmeticException();
 
-        Fraction result = new Fraction(this.numerator * fraction.getDenominator() - fraction.getNumerator() * this.denominator,
-                this.denominator * fraction.getDenominator());
+        Fraction result = new Fraction(numerator * fraction.getDenominator() - fraction.getNumerator() * this.denominator,
+                denominator * fraction.getDenominator());
         simplify(result);
         return result;
     }
 
-    public void simplify(Fraction fraction) {
+    private void simplify(Fraction fraction) {
         if (fraction.getNumerator() == 0) {
             fraction.setDenominator(1);
             return;
@@ -97,7 +129,7 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public void setDenominator(int denominator) {
-        if (denominator == 0 || denominator < 0)
+        if (denominator <= 0)
             throw new ArithmeticException();
         this.denominator = denominator;
     }
@@ -107,31 +139,33 @@ public class Fraction implements Comparable<Fraction> {
         if (this == object) return true;
         if (object == null || this.getClass() != object.getClass()) return false;
         Fraction fraction = (Fraction) object;
-        return this.numerator == fraction.getNumerator() && this.denominator == fraction.getDenominator();
+
+        if (denominator <= 0 || fraction.getDenominator() <= 0)
+            throw new ArithmeticException();
+
+        return numerator == fraction.getNumerator() && denominator == fraction.getDenominator();
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int hash = 1;
-        hash = hash * prime + Integer.hashCode(this.numerator);
-        hash = hash * prime + Integer.hashCode(this.denominator);
+        hash = hash * prime + Integer.hashCode(numerator);
+        hash = hash * prime + Integer.hashCode(denominator);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Fraction{" +
-                "numerator=" + numerator +
-                ", denominator=" + denominator +
-                '}';
+        return (denominator == 1) ? "'" + numerator + "'" :
+                "'" + numerator + "/" + denominator + "'";
     }
 
     @Override
     public int compareTo(Fraction fraction) {
-        if (this.numerator * fraction.getDenominator() == fraction.getNumerator() * this.denominator)
+        if (numerator * fraction.getDenominator() == fraction.getNumerator() * denominator)
             return 0;
-        return (this.numerator * fraction.getDenominator() > fraction.getNumerator() * this.denominator) ?
+        return (numerator * fraction.getDenominator() > fraction.getNumerator() * denominator) ?
                 1 : -1;
     }
 }

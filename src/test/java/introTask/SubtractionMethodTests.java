@@ -3,7 +3,7 @@ package introTask;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SubtractionFractionTests {
+public class SubtractionMethodTests {
 
     @Test
     public void subtractionCorrectTest() {
@@ -52,7 +52,7 @@ public class SubtractionFractionTests {
 
         fraction0 = new Fraction(-3);
         fraction1 = new Fraction(-2);
-        
+
         actual = fraction0.subtraction(fraction1);
 
         expected = new Fraction(-1);

@@ -1,9 +1,13 @@
 package introTask;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
-public class AddFractionTests {
+import java.util.regex.Matcher;
+
+public class AddMethodTests {
 
     @Test
     public void addCorrectTest() {
@@ -63,7 +67,7 @@ public class AddFractionTests {
         fraction1 = new Fraction(0);
 
         actualFraction = fraction0.add(fraction1);
-        expectedFraction = new Fraction(-3,2);
+        expectedFraction = new Fraction(-3, 2);
 
         Assert.assertEquals(expectedFraction, actualFraction);
     }
@@ -87,14 +91,22 @@ public class AddFractionTests {
         Assert.assertEquals(actual0, actual1);
     }
 
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
+
     @Test
-    public void addLimitTest() {
+    public void addOutOfRangeTest() {
         // 2 147 483 647
         Fraction fraction0 = new Fraction(2100000000);
         Fraction fraction1 = new Fraction(2000000000);
 
-        Fraction actual = fraction0.add(fraction1);
+        fraction0.add(fraction1);
 
-        System.out.println(actual.getNumerator() + " / " + actual.getDenominator());
+        String exMessage = "Out-of-range-of-data-type";
+
+
+
+        exception.expect(OutOfRangeOfDataTypeException.class);
+        exception.expectMessage();
     }
 }
