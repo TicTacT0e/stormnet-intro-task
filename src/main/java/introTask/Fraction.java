@@ -2,34 +2,29 @@ package introTask;
 
 public class Fraction implements Comparable<Fraction> {
 
-    private long numerator;
-    private long denominator;
+    private int numerator;
+    private int denominator;
 
-    Fraction() {
-    }
-
-    Fraction(long numerator, long denominator) {
+    Fraction(int numerator, int denominator) {
         if (denominator == 0 || denominator < 0)
             throw new ArithmeticException();
 
         this.numerator = numerator;
         this.denominator = denominator;
+        simplify(this);
     }
 
-    Fraction(long numerator) {
-        this.numerator = numerator;
-        this.denominator = 1;
+    Fraction(int numerator) {
+        this(numerator, 1);
     }
 
     public Fraction multiplication(Fraction fraction) {
-
         Fraction result = new Fraction(this.numerator * fraction.getNumerator(), this.denominator * fraction.getDenominator());
         simplify(result);
         return result;
     }
 
     public Fraction add(Fraction fraction) {
-
         Fraction result = new Fraction(this.numerator * fraction.getDenominator() + fraction.getNumerator() * this.denominator,
                 this.denominator * fraction.getDenominator());
         simplify(result);
@@ -37,9 +32,8 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction division(Fraction fraction) {
-
-        long resultNumerator = this.numerator * fraction.getDenominator();
-        long resultDenominator = this.denominator * fraction.getNumerator();
+        int resultNumerator = this.numerator * fraction.getDenominator();
+        int resultDenominator = this.denominator * fraction.getNumerator();
         if (resultDenominator < 0) {
             resultDenominator *= -1;
             resultNumerator *= -1;
@@ -50,7 +44,6 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction subtraction(Fraction fraction) {
-
         Fraction result = new Fraction(this.numerator * fraction.getDenominator() - fraction.getNumerator() * this.denominator,
                 this.denominator * fraction.getDenominator());
         simplify(result);
@@ -58,15 +51,14 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public void simplify(Fraction fraction) {
-
         if (fraction.getNumerator() == 0) {
             fraction.setDenominator(1);
             return;
         }
 
-        long limit = Math.min(fraction.getNumerator(), fraction.getDenominator());
+        int limit = Math.min(fraction.getNumerator(), fraction.getDenominator());
 
-        for (long i = 2; i <= Math.abs(limit); i++) {
+        for (int i = 2; i <= Math.abs(limit); i++) {
             if ((fraction.getNumerator() % i == 0) && (fraction.getDenominator() % i == 0)) {
                 fraction.setNumerator(fraction.getNumerator() / i);
                 fraction.setDenominator(fraction.getDenominator() / i);
@@ -75,19 +67,19 @@ public class Fraction implements Comparable<Fraction> {
         }
     }
 
-    public long getNumerator() {
+    public int getNumerator() {
         return numerator;
     }
 
-    public long getDenominator() {
+    public int getDenominator() {
         return denominator;
     }
 
-    public void setNumerator(long numerator) {
+    public void setNumerator(int numerator) {
         this.numerator = numerator;
     }
 
-    public void setDenominator(long denominator) {
+    public void setDenominator(int denominator) {
         if (denominator == 0 || denominator < 0)
             throw new ArithmeticException();
         this.denominator = denominator;
@@ -95,7 +87,6 @@ public class Fraction implements Comparable<Fraction> {
 
     @Override
     public boolean equals(Object object) {
-
         if (this == object) return true;
         if (object == null || this.getClass() != object.getClass()) return false;
         Fraction fraction = (Fraction) object;
@@ -104,17 +95,15 @@ public class Fraction implements Comparable<Fraction> {
 
     @Override
     public int hashCode() {
-
         final int prime = 31;
         int hash = 1;
-        hash = hash * prime + Long.hashCode(this.numerator);
-        hash = hash * prime + Long.hashCode(this.denominator);
+        hash = hash * prime + Integer.hashCode(this.numerator);
+        hash = hash * prime + Integer.hashCode(this.denominator);
         return hash;
     }
 
     @Override
     public String toString() {
-
         return "Fraction{" +
                 "numerator=" + numerator +
                 ", denominator=" + denominator +
@@ -123,7 +112,6 @@ public class Fraction implements Comparable<Fraction> {
 
     @Override
     public int compareTo(Fraction fraction) {
-
         if (this.numerator * fraction.getDenominator() == fraction.getNumerator() * this.denominator)
             return 0;
         return (this.numerator * fraction.getDenominator() > fraction.getNumerator() * this.denominator) ?
