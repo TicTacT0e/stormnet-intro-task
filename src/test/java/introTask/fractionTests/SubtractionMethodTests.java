@@ -1,5 +1,6 @@
-package introTask;
+package introTask.fractionTests;
 
+import introTask.Fraction;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -58,5 +59,21 @@ public class SubtractionMethodTests {
         expected = new Fraction(-1);
 
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void subtractionNullTest() {
+        Fraction fraction0 = new Fraction(1);
+        Fraction fraction1 = new Fraction(0);
+
+        Fraction actual = fraction0.subtraction(fraction1);
+
+        Assert.assertEquals(fraction0, actual);
+
+        fraction0 = new Fraction(-4);
+
+        actual = fraction0.subtraction(fraction1);
+
+        Assert.assertEquals(fraction0, actual);
     }
 }

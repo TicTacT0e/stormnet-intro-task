@@ -1,11 +1,8 @@
-package introTask;
+package introTask.fractionTests;
 
+import introTask.Fraction;
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
-import java.util.regex.Matcher;
 
 public class AddMethodTests {
 
@@ -91,22 +88,12 @@ public class AddMethodTests {
         Assert.assertEquals(actual0, actual1);
     }
 
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
-
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void addOutOfRangeTest() {
         // 2 147 483 647
         Fraction fraction0 = new Fraction(2100000000);
         Fraction fraction1 = new Fraction(2000000000);
 
         fraction0.add(fraction1);
-
-        String exMessage = "Out-of-range-of-data-type";
-
-
-
-        exception.expect(OutOfRangeOfDataTypeException.class);
-        exception.expectMessage();
     }
 }

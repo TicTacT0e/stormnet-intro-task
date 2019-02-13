@@ -1,5 +1,6 @@
-package introTask;
+package introTask.fractionTests;
 
+import introTask.Fraction;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -80,14 +81,5 @@ public class MultiplicationMethodTests {
         actual1 = fraction1.multiplication(fraction0);
 
         Assert.assertEquals(actual0, actual1);
-    }
-
-    @Test
-    public void multiplicationOutOfRangeTest() {
-        // 2 147 483 647
-        Fraction fraction0 = new Fraction(2100000000);
-        Fraction fraction1 = new Fraction(2000000000);
-
-        fraction0.multiplication(fraction1);
     }
 }

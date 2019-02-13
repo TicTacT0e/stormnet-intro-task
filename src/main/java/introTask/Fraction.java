@@ -5,7 +5,7 @@ public class Fraction implements Comparable<Fraction> {
     private int numerator;
     private int denominator;
 
-    Fraction(int numerator, int denominator) {
+    public Fraction(int numerator, int denominator) {
 
         if (denominator <= 0)
             throw new ArithmeticException();
@@ -16,7 +16,7 @@ public class Fraction implements Comparable<Fraction> {
         simplify(this);
     }
 
-    Fraction(int numerator) {
+    public Fraction(int numerator) {
         this(numerator, 1);
     }
 
@@ -26,22 +26,6 @@ public class Fraction implements Comparable<Fraction> {
 
         int resultNumerator = numerator * fraction.getNumerator();
         int resultDenominator = denominator * fraction.getDenominator();
-
-        try {
-            if (((numerator > 0 && fraction.getNumerator() > 0) && resultNumerator < 0 ||
-                    resultNumerator < numerator || resultNumerator < fraction.getNumerator()) ||
-                    ((numerator < 0 && fraction.getNumerator() < 0) && resultNumerator < 0))
-                throw new OutOfRangeOfDataTypeException("Out of range of data type");
-            if (((denominator > 0 && fraction.getDenominator() > 0) && resultDenominator < 0 ||
-                    resultDenominator < denominator || resultDenominator < fraction.getDenominator()) ||
-                    ((denominator < 0 && fraction.getDenominator() < 0) && resultDenominator < 0))
-                throw new OutOfRangeOfDataTypeException("Out of range of data type");
-            if (((numerator > 0 && fraction.getNumerator() < 0) && resultNumerator > 0 ||
-                    resultNumerator > fraction.getNumerator() || resultNumerator > numerator))
-                throw new OutOfRangeOfDataTypeException("Out of range of data type");
-        } catch (OutOfRangeOfDataTypeException ex) {
-            ex.printStackTrace();
-        }
 
         Fraction result = new Fraction(resultNumerator, resultDenominator);
         simplify(result);
@@ -55,18 +39,14 @@ public class Fraction implements Comparable<Fraction> {
         int resultNumerator = numerator * fraction.getDenominator() + fraction.getNumerator() * denominator;
         int resultDenominator = denominator * fraction.getDenominator();
 
-        try {
-            if (((numerator * fraction.getDenominator()) > 0 && (fraction.getNumerator() * denominator) > 0) &&
-                    resultNumerator < 0)
-                throw new OutOfRangeOfDataTypeException("Out-of-range-of-data-type");
-            if ((denominator > 0 && fraction.getDenominator() > 0) && resultDenominator < 0)
-                throw new OutOfRangeOfDataTypeException("Out-of-range-of-data-type");
-            if (((numerator * fraction.getDenominator()) < 0 && (fraction.getNumerator() * denominator) < 0) &&
-                    resultNumerator > 0)
-                throw new OutOfRangeOfDataTypeException("Out-of-range-of-data-type");
-        } catch (OutOfRangeOfDataTypeException ex) {
-            ex.printStackTrace();
-        }
+        if (((numerator * fraction.getDenominator()) > 0 && (fraction.getNumerator() * denominator) > 0) &&
+                resultNumerator < 0)
+            throw new IndexOutOfBoundsException("Out of range of data type");
+        if ((denominator > 0 && fraction.getDenominator() > 0) && resultDenominator < 0)
+            throw new IndexOutOfBoundsException("Out of range of data type");
+        if (((numerator * fraction.getDenominator()) < 0 && (fraction.getNumerator() * denominator) < 0) &&
+                resultNumerator > 0)
+            throw new IndexOutOfBoundsException("Out of range of data type");
 
         Fraction result = new Fraction(resultNumerator, resultDenominator);
         simplify(result);
@@ -93,8 +73,10 @@ public class Fraction implements Comparable<Fraction> {
         if (denominator <= 0 || fraction.getDenominator() <= 0)
             throw new ArithmeticException();
 
-        Fraction result = new Fraction(numerator * fraction.getDenominator() - fraction.getNumerator() * this.denominator,
-                denominator * fraction.getDenominator());
+        int resultNumerator = numerator * fraction.getDenominator() - fraction.getNumerator() * this.denominator;
+        int resultDenominator = denominator * fraction.getDenominator();
+
+        Fraction result = new Fraction(resultNumerator, resultDenominator);
         simplify(result);
         return result;
     }
