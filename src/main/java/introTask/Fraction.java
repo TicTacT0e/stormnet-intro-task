@@ -6,8 +6,10 @@ public class Fraction implements Comparable<Fraction> {
     private int denominator;
 
     Fraction(int numerator, int denominator) {
-        if (denominator == 0 || denominator < 0)
+
+        if (denominator <= 0)
             throw new ArithmeticException();
+
 
         this.numerator = numerator;
         this.denominator = denominator;
@@ -19,19 +21,31 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction multiplication(Fraction fraction) {
-        Fraction result = new Fraction(this.numerator * fraction.getNumerator(), this.denominator * fraction.getDenominator());
+        if (this.denominator <= 0 || fraction.getDenominator() <= 0)
+            throw new ArithmeticException();
+
+        Fraction result = new Fraction(this.numerator * fraction.getNumerator(),
+                this.denominator * fraction.getDenominator());
         simplify(result);
         return result;
     }
 
     public Fraction add(Fraction fraction) {
-        Fraction result = new Fraction(this.numerator * fraction.getDenominator() + fraction.getNumerator() * this.denominator,
+        if (this.denominator <= 0 || fraction.getDenominator() <= 0)
+            throw new ArithmeticException();
+
+        Fraction result = new Fraction(this.numerator * fraction.getDenominator() +
+                fraction.getNumerator() * this.denominator,
                 this.denominator * fraction.getDenominator());
         simplify(result);
         return result;
     }
 
     public Fraction division(Fraction fraction) {
+        if (this.denominator <= 0 || fraction.getDenominator() <= 0 ||
+                fraction.getNumerator() == 0)
+            throw new ArithmeticException();
+
         int resultNumerator = this.numerator * fraction.getDenominator();
         int resultDenominator = this.denominator * fraction.getNumerator();
         if (resultDenominator < 0) {
@@ -44,6 +58,9 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction subtraction(Fraction fraction) {
+        if (this.denominator <= 0 || fraction.getDenominator() <= 0)
+            throw new ArithmeticException();
+
         Fraction result = new Fraction(this.numerator * fraction.getDenominator() - fraction.getNumerator() * this.denominator,
                 this.denominator * fraction.getDenominator());
         simplify(result);
