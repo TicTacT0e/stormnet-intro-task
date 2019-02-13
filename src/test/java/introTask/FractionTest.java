@@ -1,4 +1,4 @@
-package network;
+package introTask;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FractionTest {
-
 
     private Fraction fraction1 = new Fraction(4, 6);
     private Fraction fraction2 = new Fraction(-3, 4);
@@ -34,7 +33,7 @@ public class FractionTest {
     }
 
     @Test
-    public void add() {
+    public void addCorrect() {
 
         List<Fraction> actual = new ArrayList<>();
         actual.add(fraction1.add(fraction3));
@@ -49,6 +48,24 @@ public class FractionTest {
         expected.add(new Fraction(148, 69));
 
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addWrong() {
+
+        Fraction fract1 = new Fraction(1, 0);
+        Fraction fract2 = new Fraction(2, -1);
+
+        fract1.add(fract2);
+    }
+
+    @Test
+    public void addLimit() {
+
+        Fraction limitFract = new Fraction(999999999);
+
+        limitFract.add(limitFract);
+
     }
 
     @Test
@@ -89,4 +106,18 @@ public class FractionTest {
 
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void equals() {
+        List<Boolean> actual = new ArrayList<>();
+        actual.add(fraction1.equals(fraction1));
+        actual.add(fraction3.equals(fraction4));
+
+        List<Boolean> expected = new ArrayList<>();
+        expected.add(Boolean.FALSE);
+        expected.add(Boolean.TRUE);
+    }
+
+
+
 }

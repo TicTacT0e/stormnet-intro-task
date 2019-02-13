@@ -1,10 +1,6 @@
-package network;
+package introTask;
 
-public class Main {
-
-    public static void main(String[] args) {
-
-    }
+public class Utils {
 
     private static int square(int a) { return a * a; }
 

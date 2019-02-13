@@ -1,4 +1,4 @@
-package network;
+package introTask;
 
 public class Fraction implements Comparable<Fraction> {
 
