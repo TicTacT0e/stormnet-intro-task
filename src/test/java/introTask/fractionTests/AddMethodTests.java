@@ -16,19 +16,12 @@ public class AddMethodTests {
         Fraction expected = new Fraction(5, 4);
 
         Assert.assertEquals(expected, actual);
+
     }
 
     @Test(expected = ArithmeticException.class)
     public void addIncorrectTest() {
-        Fraction fraction0 = new Fraction(5, 0);
-        Fraction fraction1 = new Fraction(7, 3);
-
-        fraction0.add(fraction1);
-
-        fraction0 = new Fraction(6, 7);
-        fraction1 = new Fraction(4, -7);
-
-        fraction0.add(fraction1);
+        new Fraction(5, 0);
     }
 
     @Test
@@ -88,12 +81,5 @@ public class AddMethodTests {
         Assert.assertEquals(actual0, actual1);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void addOutOfRangeTest() {
-        // 2 147 483 647
-        Fraction fraction0 = new Fraction(2100000000);
-        Fraction fraction1 = new Fraction(2000000000);
-
-        fraction0.add(fraction1);
-    }
 }
+

@@ -10,6 +10,8 @@ public class EqualsMethodTests {
     public void equalsCorrectTest() {
         Assert.assertTrue(new Fraction(1, 2).equals(new Fraction(1, 2)));
         Assert.assertTrue(new Fraction(6).equals(new Fraction(6)));
+        Fraction fraction = new Fraction(9, 17);
+        Assert.assertTrue(fraction.equals(fraction));
     }
 
     @Test

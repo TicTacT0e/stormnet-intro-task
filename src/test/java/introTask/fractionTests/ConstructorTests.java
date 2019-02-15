@@ -37,7 +37,6 @@ public class ConstructorTests {
 
     @Test(expected = ArithmeticException.class)
     public void constructorArithmeticExceptionTest() {
-        Fraction fraction0 = new Fraction(1, 0);
-        Fraction fraction1 = new Fraction(2, -1);
+        new Fraction(1, 0);
     }
 }

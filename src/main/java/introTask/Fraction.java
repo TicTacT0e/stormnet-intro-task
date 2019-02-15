@@ -6,10 +6,9 @@ public class Fraction implements Comparable<Fraction> {
     private int denominator;
 
     public Fraction(int numerator, int denominator) {
-
-        if (denominator <= 0)
+        if (denominator <= 0) {
             throw new ArithmeticException();
-
+        }
 
         this.numerator = numerator;
         this.denominator = denominator;
@@ -21,42 +20,23 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction multiplication(Fraction fraction) {
-        if (denominator <= 0 || fraction.getDenominator() <= 0)
-            throw new ArithmeticException();
-
-        int resultNumerator = numerator * fraction.getNumerator();
-        int resultDenominator = denominator * fraction.getDenominator();
-
-        Fraction result = new Fraction(resultNumerator, resultDenominator);
+        Fraction result = new Fraction(numerator * fraction.getNumerator(),
+                denominator * fraction.getDenominator());
         simplify(result);
         return result;
     }
 
     public Fraction add(Fraction fraction) {
-        if (denominator <= 0 || fraction.getDenominator() <= 0)
-            throw new ArithmeticException();
-
-        int resultNumerator = numerator * fraction.getDenominator() + fraction.getNumerator() * denominator;
-        int resultDenominator = denominator * fraction.getDenominator();
-
-        if (((numerator * fraction.getDenominator()) > 0 && (fraction.getNumerator() * denominator) > 0) &&
-                resultNumerator < 0)
-            throw new IndexOutOfBoundsException("Out of range of data type");
-        if ((denominator > 0 && fraction.getDenominator() > 0) && resultDenominator < 0)
-            throw new IndexOutOfBoundsException("Out of range of data type");
-        if (((numerator * fraction.getDenominator()) < 0 && (fraction.getNumerator() * denominator) < 0) &&
-                resultNumerator > 0)
-            throw new IndexOutOfBoundsException("Out of range of data type");
-
-        Fraction result = new Fraction(resultNumerator, resultDenominator);
+        Fraction result = new Fraction(numerator * fraction.getDenominator() + fraction.getNumerator() * denominator,
+                denominator * fraction.getDenominator());
         simplify(result);
         return result;
     }
 
     public Fraction division(Fraction fraction) {
-        if (denominator <= 0 || fraction.getDenominator() <= 0 ||
-                fraction.getNumerator() == 0)
+        if (fraction.getNumerator() == 0) {
             throw new ArithmeticException();
+        }
 
         int resultNumerator = numerator * fraction.getDenominator();
         int resultDenominator = denominator * fraction.getNumerator();
@@ -70,13 +50,8 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction subtraction(Fraction fraction) {
-        if (denominator <= 0 || fraction.getDenominator() <= 0)
-            throw new ArithmeticException();
-
-        int resultNumerator = numerator * fraction.getDenominator() - fraction.getNumerator() * this.denominator;
-        int resultDenominator = denominator * fraction.getDenominator();
-
-        Fraction result = new Fraction(resultNumerator, resultDenominator);
+        Fraction result = new Fraction(numerator * fraction.getDenominator() - fraction.getNumerator() * this.denominator,
+                denominator * fraction.getDenominator());
         simplify(result);
         return result;
     }
@@ -111,20 +86,18 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public void setDenominator(int denominator) {
-        if (denominator <= 0)
-            throw new ArithmeticException();
         this.denominator = denominator;
     }
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || this.getClass() != object.getClass()) return false;
+        if (this == object) {
+            return true;
+        }
+        if (object == null || this.getClass() != object.getClass()) {
+            return false;
+        }
         Fraction fraction = (Fraction) object;
-
-        if (denominator <= 0 || fraction.getDenominator() <= 0)
-            throw new ArithmeticException();
-
         return numerator == fraction.getNumerator() && denominator == fraction.getDenominator();
     }
 
@@ -145,8 +118,9 @@ public class Fraction implements Comparable<Fraction> {
 
     @Override
     public int compareTo(Fraction fraction) {
-        if (numerator * fraction.getDenominator() == fraction.getNumerator() * denominator)
+        if (numerator * fraction.getDenominator() == fraction.getNumerator() * denominator) {
             return 0;
+        }
         return (numerator * fraction.getDenominator() > fraction.getNumerator() * denominator) ?
                 1 : -1;
     }

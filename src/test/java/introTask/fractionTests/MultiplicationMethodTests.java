@@ -30,14 +30,6 @@ public class MultiplicationMethodTests {
     @Test(expected = ArithmeticException.class)
     public void multiplicationIncorrectTest() {
         Fraction fraction0 = new Fraction(4, 0);
-        Fraction fraction1 = new Fraction(7, 2);
-
-        fraction0.multiplication(fraction1);
-
-        fraction0 = new Fraction(3, 8);
-        fraction1 = new Fraction(9, -4);
-
-        fraction0.multiplication(fraction1);
     }
 
     @Test

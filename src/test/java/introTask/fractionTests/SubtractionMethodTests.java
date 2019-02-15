@@ -29,15 +29,7 @@ public class SubtractionMethodTests {
 
     @Test(expected = ArithmeticException.class)
     public void subtractionIncorrectTest() {
-        Fraction fraction0 = new Fraction(4, -9);
-        Fraction fraction1 = new Fraction(1, 2);
-
-        fraction0.subtraction(fraction1);
-
-        fraction0 = new Fraction(7, 9);
-        fraction1 = new Fraction(9, 0);
-
-        fraction0.subtraction(fraction1);
+        new Fraction(4, -9);
     }
 
     @Test
