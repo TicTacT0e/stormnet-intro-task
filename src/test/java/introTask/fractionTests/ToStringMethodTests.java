@@ -4,7 +4,7 @@ import introTask.Fraction;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ToStringMethodTest {
+public class ToStringMethodTests {
 
     @Test
     public void toStringIntegerTest() {
