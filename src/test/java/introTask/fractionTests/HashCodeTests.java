@@ -4,7 +4,7 @@ import introTask.Fraction;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class HashCodeTest {
+public class HashCodeTests {
 
     @Test
     public void hashCodeAdditivity() {
