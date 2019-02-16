@@ -7,7 +7,7 @@ import org.junit.Test;
 public class MultiplicationTests {
 
     @Test
-    public void multiplicationCorrectDataTest() {
+    public void multiplicationCorrectData() {
         Fraction actual =
                 new Fraction(2, 3).multiplication(new Fraction(1, 4));
 
@@ -17,7 +17,7 @@ public class MultiplicationTests {
     }
 
     @Test
-    public void multiplicationIntegerTest() {
+    public void multiplicationInteger() {
         Fraction actual =
                 new Fraction(5).multiplication(new Fraction(4));
 
@@ -27,7 +27,7 @@ public class MultiplicationTests {
     }
 
     @Test
-    public void multiplicationNullTest() {
+    public void multiplicationNull() {
         Fraction actual =
                 new Fraction(5, 8).multiplication(new Fraction(0));
 
@@ -37,7 +37,7 @@ public class MultiplicationTests {
     }
 
     @Test
-    public void multiplicationAdditivityTest() {
+    public void multiplicationAdditivity() {
         Fraction fraction0 = new Fraction(5, 7);
         Fraction fraction1 = new Fraction(8, 9);
 
@@ -48,7 +48,7 @@ public class MultiplicationTests {
     }
 
     @Test
-    public void multiplicationEdgeValuesTest() {
+    public void multiplicationEdgeValues() {
         Fraction fraction0 = new Fraction(-1);
         Fraction fraction1 = new Fraction(1);
         Fraction fraction2 = new Fraction(0);
