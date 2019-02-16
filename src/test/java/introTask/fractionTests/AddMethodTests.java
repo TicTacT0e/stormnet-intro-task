@@ -7,11 +7,9 @@ import org.junit.Test;
 public class AddMethodTests {
 
     @Test
-    public void addCorrectTest() {
-        Fraction fraction0 = new Fraction(3, 4);
-        Fraction fraction1 = new Fraction(1, 2);
-
-        Fraction actual = fraction0.add(fraction1);
+    public void addCorrectDataTest() {
+        Fraction actual =
+                new Fraction(3, 4).add(new Fraction(1, 2));
 
         Fraction expected = new Fraction(5, 4);
 
@@ -20,46 +18,26 @@ public class AddMethodTests {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void addIncorrectTest() {
+    public void addIncorrectDataTest() {
         new Fraction(5, 0);
     }
 
     @Test
     public void addIntegerTest() {
-        Fraction fraction0 = new Fraction(3);
-        Fraction fraction1 = new Fraction(-4);
+        Fraction actual = new Fraction(3).add(new Fraction(-4));
 
-        Fraction actualFraction = fraction0.add(fraction1);
-        Fraction expectedFraction = new Fraction(-1);
+        Fraction expected = new Fraction(-1);
 
-        Assert.assertEquals(expectedFraction, actualFraction);
-
-        fraction0 = new Fraction(5);
-        fraction1 = new Fraction(9);
-
-        actualFraction = fraction0.add(fraction1);
-        expectedFraction = new Fraction(14);
-
-        Assert.assertEquals(expectedFraction, actualFraction);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void addNullTest() {
-        Fraction fraction0 = new Fraction(5, 8);
-        Fraction fraction1 = new Fraction(0);
+        Fraction actual = new Fraction(5, 8).add(new Fraction(0));
 
-        Fraction actualFraction = fraction0.add(fraction1);
-        Fraction expectedFraction = new Fraction(5, 8);
+        Fraction expected = new Fraction(5, 8);
 
-        Assert.assertEquals(expectedFraction, actualFraction);
-
-        fraction0 = new Fraction(-3, 2);
-        fraction1 = new Fraction(0);
-
-        actualFraction = fraction0.add(fraction1);
-        expectedFraction = new Fraction(-3, 2);
-
-        Assert.assertEquals(expectedFraction, actualFraction);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -67,18 +45,19 @@ public class AddMethodTests {
         Fraction fraction0 = new Fraction(15, 16);
         Fraction fraction1 = new Fraction(19, 34);
 
-        Fraction actual0 = fraction0.add(fraction1);
-        Fraction actual1 = fraction1.add(fraction0);
+        Fraction actualFirst = fraction0.add(fraction1);
+        Fraction actualSecond = fraction1.add(fraction0);
 
-        Assert.assertEquals(actual0, actual1);
+        Assert.assertEquals(actualFirst, actualSecond);
+    }
 
-        fraction0 = new Fraction(-56, 78);
-        fraction1 = new Fraction(78, 94);
+    @Test
+    public void addEdgeValuesTest() {
+        Fraction fraction0 = new Fraction(-1);
+        Fraction fraction1 = new Fraction(1);
+        Fraction fraction2 = new Fraction(0);
 
-        actual0 = fraction0.add(fraction1);
-        actual1 = fraction1.add(fraction0);
-
-        Assert.assertEquals(actual0, actual1);
+        Assert.assertEquals(fraction0.add(fraction1), fraction2);
     }
 
 }

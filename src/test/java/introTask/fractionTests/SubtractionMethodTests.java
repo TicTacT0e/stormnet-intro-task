@@ -7,65 +7,41 @@ import org.junit.Test;
 public class SubtractionMethodTests {
 
     @Test
-    public void subtractionCorrectTest() {
-        Fraction fraction0 = new Fraction(4, 5);
-        Fraction fraction1 = new Fraction(2, 5);
-
-        Fraction actual = fraction0.subtraction(fraction1);
+    public void subtractionCorrectDataTest() {
+        Fraction actual =
+                new Fraction(4, 5).subtraction(new Fraction(2, 5));
 
         Fraction expected = new Fraction(2, 5);
 
         Assert.assertEquals(expected, actual);
-
-        fraction0 = new Fraction(-1, 4);
-        fraction1 = new Fraction(5, 8);
-
-        actual = fraction0.subtraction(fraction1);
-
-        expected = new Fraction(-7, 8);
-
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test(expected = ArithmeticException.class)
-    public void subtractionIncorrectTest() {
-        new Fraction(4, -9);
     }
 
     @Test
     public void subtractionIntegerTest() {
-        Fraction fraction0 = new Fraction(5);
-        Fraction fraction1 = new Fraction(3);
-
-        Fraction actual = fraction0.subtraction(fraction1);
+        Fraction actual =
+                new Fraction(5).subtraction(new Fraction(3));
 
         Fraction expected = new Fraction(2);
-
-        Assert.assertEquals(expected, actual);
-
-        fraction0 = new Fraction(-3);
-        fraction1 = new Fraction(-2);
-
-        actual = fraction0.subtraction(fraction1);
-
-        expected = new Fraction(-1);
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void subtractionNullTest() {
-        Fraction fraction0 = new Fraction(1);
+        Fraction fraction0 = new Fraction(3, 7);
         Fraction fraction1 = new Fraction(0);
 
         Fraction actual = fraction0.subtraction(fraction1);
 
         Assert.assertEquals(fraction0, actual);
+    }
 
-        fraction0 = new Fraction(-4);
+    @Test
+    public void subtractionEdgeValuesTest() {
+        Fraction fraction0 = new Fraction(-1);
+        Fraction fraction1 = new Fraction(1);
 
-        actual = fraction0.subtraction(fraction1);
-
-        Assert.assertEquals(fraction0, actual);
+        Assert.assertEquals(new Fraction(2), fraction1.subtraction(fraction0));
+        Assert.assertEquals(new Fraction(-2), fraction0.subtraction(fraction1));
     }
 }

@@ -17,14 +17,17 @@ public class CompareToMethodTest {
     }
 
     @Test
-    public void compareToCorrectTest() {
+    public void compareToCorrectLessTest() {
         Assert.assertEquals(-1,
                 new Fraction(2, 5).compareTo(new Fraction(4, 5)));
         Assert.assertEquals(-1,
                 new Fraction(-1, 7).compareTo(new Fraction(45, 1000)));
         Assert.assertEquals(-1,
                 new Fraction(-1, 2).compareTo(new Fraction(-1, 3)));
+    }
 
+    @Test
+    public void compareToCorrectLargerTest() {
         Assert.assertEquals(1,
                 new Fraction(4, 6).compareTo(new Fraction(3, 6)));
         Assert.assertEquals(1,
@@ -32,5 +35,4 @@ public class CompareToMethodTest {
         Assert.assertEquals(1,
                 new Fraction(0).compareTo(new Fraction(-5)));
     }
-
 }

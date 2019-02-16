@@ -50,7 +50,7 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction subtraction(Fraction fraction) {
-        Fraction result = new Fraction(numerator * fraction.getDenominator() - fraction.getNumerator() * this.denominator,
+        Fraction result = new Fraction(numerator * fraction.getDenominator() - fraction.getNumerator() * denominator,
                 denominator * fraction.getDenominator());
         simplify(result);
         return result;

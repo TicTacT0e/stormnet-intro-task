@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConstructorTests {
 
@@ -29,14 +27,14 @@ public class ConstructorTests {
 
     @Test
     public void constructorSimplifyTest() {
-        Fraction actualFraction = new Fraction(3, 6);
-        Fraction expectedFraction = new Fraction(1,2);
+        Fraction actual = new Fraction(3, 6);
+        Fraction expected = new Fraction(1,2);
 
-        Assert.assertEquals(expectedFraction, actualFraction);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test(expected = ArithmeticException.class)
-    public void constructorArithmeticExceptionTest() {
+    public void constructorIncorrectDataTest() {
         new Fraction(1, 0);
     }
 }
