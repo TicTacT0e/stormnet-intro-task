@@ -16,5 +16,9 @@ public class ToStringMethodTests {
     public void toStringFractionTest() {
         Fraction fraction = new Fraction(-1, 2);
         Assert.assertEquals("-1/2", fraction.toString());
+<<<<<<< HEAD:src/test/java/introTask/fractionTests/ToStringMethodTests.java
+=======
+        System.out.println(fraction.toString());
+>>>>>>> cbd1479... toString refactor:src/test/java/introTask/fractionTests/ToStringTest.java
     }
 }
