@@ -4,7 +4,7 @@ import introTask.Fraction;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SubtractionMethodTests {
+public class SubtractionTests {
 
     @Test
     public void subtractionCorrectDataTest() {

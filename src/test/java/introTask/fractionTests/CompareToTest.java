@@ -4,7 +4,7 @@ import introTask.Fraction;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CompareToMethodTest {
+public class CompareToTest {
 
     @Test
     public void compareToCorrectEqualFractionsTest() {
