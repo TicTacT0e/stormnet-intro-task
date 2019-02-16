@@ -112,8 +112,8 @@ public class Fraction implements Comparable<Fraction> {
 
     @Override
     public String toString() {
-        return (denominator == 1) ? "'" + numerator + "'" :
-                "'" + numerator + "/" + denominator + "'";
+        return (denominator == 1) ? "" + numerator :
+                numerator + "/" + denominator;
     }
 
     @Override
