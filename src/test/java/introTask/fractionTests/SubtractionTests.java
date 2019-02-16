@@ -7,7 +7,7 @@ import org.junit.Test;
 public class SubtractionTests {
 
     @Test
-    public void subtractionCorrectDataTest() {
+    public void subtractionCorrectData() {
         Fraction actual =
                 new Fraction(4, 5).subtraction(new Fraction(2, 5));
 
@@ -17,7 +17,7 @@ public class SubtractionTests {
     }
 
     @Test
-    public void subtractionIntegerTest() {
+    public void subtractionInteger() {
         Fraction actual =
                 new Fraction(5).subtraction(new Fraction(3));
 
@@ -27,7 +27,7 @@ public class SubtractionTests {
     }
 
     @Test
-    public void subtractionNullTest() {
+    public void subtractionNull() {
         Fraction fraction0 = new Fraction(3, 7);
         Fraction fraction1 = new Fraction(0);
 
@@ -37,7 +37,7 @@ public class SubtractionTests {
     }
 
     @Test
-    public void subtractionEdgeValuesTest() {
+    public void subtractionEdgeValues() {
         Fraction fraction0 = new Fraction(-1);
         Fraction fraction1 = new Fraction(1);
 

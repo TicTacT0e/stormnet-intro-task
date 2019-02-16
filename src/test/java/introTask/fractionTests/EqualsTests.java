@@ -7,7 +7,7 @@ import org.junit.Test;
 public class EqualsTests {
 
     @Test
-    public void equalsTrueTest() {
+    public void equalsTrue() {
         Assert.assertTrue(new Fraction(1, 2).equals(new Fraction(1, 2)));
         Assert.assertTrue(new Fraction(6).equals(new Fraction(6)));
         Fraction fraction = new Fraction(9, 17);
@@ -15,23 +15,23 @@ public class EqualsTests {
     }
 
     @Test
-    public void equalsFalseTest() {
+    public void equalsFalse() {
         Assert.assertFalse(new Fraction(1, 6).equals(new Fraction(-1, 6)));
         Assert.assertFalse(new Fraction(5, 9).equals(new Fraction(3, 4)));
     }
 
     @Test
-    public void equalsDifferentObjectTest() {
+    public void equalsDifferentObject() {
         Assert.assertFalse(new Fraction(1, 2).equals(new StringBuilder("some-string")));
     }
 
     @Test
-    public void equalsNullTest() {
+    public void equalsNull() {
         Assert.assertFalse(new Fraction(4, 5).equals(null));
     }
 
     @Test
-    public void equalsAdditivityTest(){
+    public void equalsAdditivity(){
         Fraction fraction0 = new Fraction(1, 3);
         Fraction fraction1 = new Fraction(1, 3);
 

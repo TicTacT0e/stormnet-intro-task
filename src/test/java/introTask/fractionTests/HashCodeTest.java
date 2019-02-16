@@ -7,7 +7,7 @@ import org.junit.Test;
 public class HashCodeTest {
 
     @Test
-    public void hashCodeAdditivityTest() {
+    public void hashCodeAdditivity() {
         Assert.assertEquals(new Fraction(2).hashCode(),
                 new Fraction(2).hashCode());
     }

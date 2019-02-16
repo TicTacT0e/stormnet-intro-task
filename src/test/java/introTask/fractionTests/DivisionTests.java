@@ -7,7 +7,7 @@ import org.junit.Test;
 public class DivisionTests {
 
     @Test
-    public void divisionCorrectDataTest() {
+    public void divisionCorrectData() {
         Fraction actual =
                 new Fraction(2, 3).division(new Fraction(-7, 9));
 
@@ -17,12 +17,12 @@ public class DivisionTests {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void divisionIncorrectDataTest() {
+    public void divisionIncorrectData() {
         new Fraction(9, -6);
     }
 
     @Test
-    public void divisionIntegerTest() {
+    public void divisionInteger() {
         Fraction actual =
                 new Fraction(9).division(new Fraction(8));
 
@@ -32,7 +32,7 @@ public class DivisionTests {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void divisionNullTest() {
+    public void divisionNull() {
         Fraction fraction0 = new Fraction(1, 5);
         Fraction fraction1 = new Fraction(0);
 
@@ -40,7 +40,7 @@ public class DivisionTests {
     }
 
     @Test
-    public void divisionEdgeValuesTest() {
+    public void divisionEdgeValues() {
         Fraction fraction0 = new Fraction(-1);
         Fraction fraction1 = new Fraction(1);
         Fraction fraction2 = new Fraction(0);

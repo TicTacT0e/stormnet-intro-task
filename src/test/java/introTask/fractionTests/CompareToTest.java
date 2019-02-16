@@ -7,7 +7,7 @@ import org.junit.Test;
 public class CompareToTest {
 
     @Test
-    public void compareToCorrectEqualFractionsTest() {
+    public void compareToCorrectEqualFractions() {
         Assert.assertEquals(0,
                 new Fraction(1, 2).compareTo(new Fraction(2, 4)));
         Assert.assertEquals(0,
@@ -17,7 +17,7 @@ public class CompareToTest {
     }
 
     @Test
-    public void compareToCorrectLessTest() {
+    public void compareToCorrectLess() {
         Assert.assertEquals(-1,
                 new Fraction(2, 5).compareTo(new Fraction(4, 5)));
         Assert.assertEquals(-1,
@@ -27,7 +27,7 @@ public class CompareToTest {
     }
 
     @Test
-    public void compareToCorrectLargerTest() {
+    public void compareToCorrectLarger() {
         Assert.assertEquals(1,
                 new Fraction(4, 6).compareTo(new Fraction(3, 6)));
         Assert.assertEquals(1,

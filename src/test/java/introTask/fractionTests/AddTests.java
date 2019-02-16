@@ -7,7 +7,7 @@ import org.junit.Test;
 public class AddTests {
 
     @Test
-    public void addCorrectDataTest() {
+    public void addCorrectData() {
         Fraction actual =
                 new Fraction(3, 4).add(new Fraction(1, 2));
 
@@ -18,12 +18,12 @@ public class AddTests {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void addIncorrectDataTest() {
+    public void addIncorrectData() {
         new Fraction(5, 0);
     }
 
     @Test
-    public void addIntegerTest() {
+    public void addInteger() {
         Fraction actual = new Fraction(3).add(new Fraction(-4));
 
         Fraction expected = new Fraction(-1);
@@ -32,7 +32,7 @@ public class AddTests {
     }
 
     @Test
-    public void addNullTest() {
+    public void addNull() {
         Fraction actual = new Fraction(5, 8).add(new Fraction(0));
 
         Fraction expected = new Fraction(5, 8);
@@ -41,7 +41,7 @@ public class AddTests {
     }
 
     @Test
-    public void addAdditivityTest() {
+    public void addAdditivity() {
         Fraction fraction0 = new Fraction(15, 16);
         Fraction fraction1 = new Fraction(19, 34);
 
@@ -52,7 +52,7 @@ public class AddTests {
     }
 
     @Test
-    public void addEdgeValuesTest() {
+    public void addEdgeValues() {
         Fraction fraction0 = new Fraction(-1);
         Fraction fraction1 = new Fraction(1);
         Fraction fraction2 = new Fraction(0);

@@ -9,7 +9,7 @@ import java.lang.reflect.Field;
 public class ConstructorTests {
 
     @Test
-    public void constructorFieldTest() throws NoSuchFieldException, IllegalAccessException {
+    public void constructorField() throws NoSuchFieldException, IllegalAccessException {
         int numerator = 3; int denominator = 5;
         Fraction fraction = new Fraction(numerator, denominator);
 
@@ -26,7 +26,7 @@ public class ConstructorTests {
     }
 
     @Test
-    public void constructorSimplifyTest() {
+    public void constructorSimplify() {
         Fraction actual = new Fraction(3, 6);
         Fraction expected = new Fraction(1,2);
 
@@ -34,7 +34,7 @@ public class ConstructorTests {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void constructorIncorrectDataTest() {
+    public void constructorIncorrectData() {
         new Fraction(1, 0);
     }
 }
