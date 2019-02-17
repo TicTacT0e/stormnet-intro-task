@@ -16,4 +16,9 @@ public class ConstructorTests {
     public void constructorNegativeSize() {
         new MyStack<String>(-5);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void constrictorNullSize() {
+        new MyStack<Double>(0);
+    }
 }

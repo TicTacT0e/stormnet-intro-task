@@ -51,7 +51,7 @@ public class MyStack<T> {
     }
 
     public boolean isEmpty() {
-        return top <= -1;
+        return top == -1;
     }
 
     public int size() {
