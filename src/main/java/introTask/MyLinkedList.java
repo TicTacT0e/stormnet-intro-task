@@ -26,33 +26,28 @@ public class MyLinkedList<T> {
     }
 
     public void add(T item, int index) {
+        checkIndex(index);
 
+        if (index == size) {
+            linkLast(item);
+        } else { linkBefore(item, getNodeByIndex(index)); }
     }
 
     public void add(T item) {
-
+        linkLast(item);
     }
 
-    private boolean checkIndex(int index) {
-        if (index >= 0 && index < size) {
-            return true;
-        }
-        throw new IndexOutOfBoundsException();
+    public T remove(int index) {
+        checkIndex(index);
+
+        return unlink(getNodeByIndex(index));
     }
 
-    /*
-    private void linkFirst(T item) {
-        final Node<T> _first = first;
-        final Node<T> newNode = new Node<>(null, item, _first);
-        first = newNode;
-        if (_first == null) {
-            last = newNode;
-        } else {
-            _first.previous = newNode;
-        }
-        size++;
+    public T get(int index) {
+        checkIndex(index);
+
+        return getNodeByIndex(index).item;
     }
-    */
 
     private void linkFirst(T item) {
         Node<T> oldFirst = first;
@@ -65,6 +60,19 @@ public class MyLinkedList<T> {
         size++;
     }
 
+    private void linkBefore(T item, Node<T> nextNode) {
+        Node<T> previous = nextNode.previous;
+        Node<T> newNode = new Node<>(previous, item, nextNode);
+        nextNode.previous = newNode;
+        if (previous == null) {
+            first = newNode;
+        } else {
+            previous.next = newNode;
+        }
+        size++;
+    }
+
+
     private void linkLast(T item) {
         Node<T> oldLast = last;
         last = new Node<T>(oldLast, item, null);
@@ -75,6 +83,92 @@ public class MyLinkedList<T> {
         }
         size++;
     }
+
+    /*
+    private T unlinkFirst(Node<T> node) {
+        T item = node.item;
+        Node<T> next = node.next;
+        node.item = null;
+        node.next = null;
+        first = next;
+
+        if (next == null){
+            last = null;
+        } else {
+            next.previous = null;
+        }
+        size--;
+        return item;
+    }
+    */
+
+
+    private T unlink(Node<T> node) {
+        T item = node.item;
+        Node<T> next = node.next;
+        Node<T> previous = node.previous;
+
+        if (previous == null) {
+            first = next;
+        } else {
+            previous.next = next;
+            node.previous = null;
+        }
+
+        if (next == null) {
+            last = previous;
+        } else  {
+            next.previous = previous;
+            node.next = null;
+        }
+
+        node.item = null;
+        size--;
+        return item;
+    }
+
+    /*
+    private T unlinkLast(Node<T> node) {
+        T item = node.item;
+        Node<T> previous = node.previous;
+        node.item = null;
+        node.previous = null;
+        last = previous;
+        if (previous == null){
+            first = null;
+        } else {
+            previous.next = null;
+        }
+        size--;
+        return item;
+    }
+    */
+
+    private Node<T> getNodeByIndex(int index){
+        checkIndex(index);
+        Node<T> tempNode;
+
+        if (index < size / 2) {
+            tempNode = first;
+            for (int i = 0; i < index; i++){
+                tempNode = tempNode.next;
+            }
+            return tempNode;
+        } else {
+            tempNode = last;
+            for (int i = size - 1; i > index; i--){
+                tempNode = tempNode.previous;
+            }
+            return tempNode;
+        }
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size){
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
 
 
     private static class Node<T> {
