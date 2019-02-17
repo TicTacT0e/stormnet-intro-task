@@ -1,9 +1,7 @@
 package introTask;
 
 
-/*
- * add(T, int index), remove(index), get(int index), size, equals, hashcode, toString
- */
+import java.util.Objects;
 
 public class MyLinkedList<T> {
 
@@ -30,7 +28,9 @@ public class MyLinkedList<T> {
 
         if (index == size) {
             linkLast(item);
-        } else { linkBefore(item, getNodeByIndex(index)); }
+        } else {
+            link(item, getNodeByIndex(index));
+        }
     }
 
     public void add(T item) {
@@ -49,18 +49,32 @@ public class MyLinkedList<T> {
         return getNodeByIndex(index).item;
     }
 
-    private void linkFirst(T item) {
-        Node<T> oldFirst = first;
-        first = new Node<>(null, item, oldFirst);
-        if (isEmpty()) {
-            last = first;
-        } else {
-            oldFirst.previous = first;
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
         }
-        size++;
     }
 
-    private void linkBefore(T item, Node<T> nextNode) {
+    private Node<T> getNodeByIndex(int index) {
+        checkIndex(index);
+        Node<T> tempNode;
+
+        if (index < size / 2) {
+            tempNode = first;
+            for (int i = 0; i < index; i++) {
+                tempNode = tempNode.next;
+            }
+            return tempNode;
+        } else {
+            tempNode = last;
+            for (int i = size - 1; i > index; i--) {
+                tempNode = tempNode.previous;
+            }
+            return tempNode;
+        }
+    }
+
+    private void link(T item, Node<T> nextNode) {
         Node<T> previous = nextNode.previous;
         Node<T> newNode = new Node<>(previous, item, nextNode);
         nextNode.previous = newNode;
@@ -84,25 +98,6 @@ public class MyLinkedList<T> {
         size++;
     }
 
-    /*
-    private T unlinkFirst(Node<T> node) {
-        T item = node.item;
-        Node<T> next = node.next;
-        node.item = null;
-        node.next = null;
-        first = next;
-
-        if (next == null){
-            last = null;
-        } else {
-            next.previous = null;
-        }
-        size--;
-        return item;
-    }
-    */
-
-
     private T unlink(Node<T> node) {
         T item = node.item;
         Node<T> next = node.next;
@@ -117,7 +112,7 @@ public class MyLinkedList<T> {
 
         if (next == null) {
             last = previous;
-        } else  {
+        } else {
             next.previous = previous;
             node.next = null;
         }
@@ -127,49 +122,30 @@ public class MyLinkedList<T> {
         return item;
     }
 
-    /*
-    private T unlinkLast(Node<T> node) {
-        T item = node.item;
-        Node<T> previous = node.previous;
-        node.item = null;
-        node.previous = null;
-        last = previous;
-        if (previous == null){
-            first = null;
-        } else {
-            previous.next = null;
-        }
-        size--;
-        return item;
-    }
-    */
-
-    private Node<T> getNodeByIndex(int index){
-        checkIndex(index);
-        Node<T> tempNode;
-
-        if (index < size / 2) {
-            tempNode = first;
-            for (int i = 0; i < index; i++){
-                tempNode = tempNode.next;
-            }
-            return tempNode;
-        } else {
-            tempNode = last;
-            for (int i = size - 1; i > index; i--){
-                tempNode = tempNode.previous;
-            }
-            return tempNode;
-        }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) { return true; }
+        if (!(object instanceof MyLinkedList)) { return false; }
+        MyLinkedList<?> thatObject = (MyLinkedList<?>) object;
+        return size == thatObject.size &&
+                Objects.equals(first, thatObject.first) &&
+                Objects.equals(last, thatObject.last);
     }
 
-    private void checkIndex(int index) {
-        if (index < 0 || index >= size){
-            throw new IndexOutOfBoundsException();
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hash(size, first, last);
     }
 
-
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        for (int i = 0; i < this.size; i++){
+            string.append(this.get(i));
+            string.append(' ');
+        }
+        return string.toString();
+    }
 
     private static class Node<T> {
         T item;
@@ -182,5 +158,7 @@ public class MyLinkedList<T> {
             this.next = next;
         }
     }
-
 }
+
+
+
