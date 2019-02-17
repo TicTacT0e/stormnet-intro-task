@@ -10,6 +10,7 @@ public class MyStack<T> {
     private int capacity;
     private int top;
 
+
     public MyStack(int capacity) {
         if (capacity < 1) {
             throw new IllegalArgumentException();
@@ -23,6 +24,7 @@ public class MyStack<T> {
         this(10);
     }
 
+
     public void push(T element) {
         if (top == capacity - 1) {
             capacity *= 2;
@@ -35,15 +37,17 @@ public class MyStack<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public synchronized T pop() {
+    public T pop() {
         if (this.isEmpty()) {
             throw new EmptyStackException();
         }
-        return (T) array[top--];
+        T result = (T) array[top];
+        array[top--] = null;
+        return result;
     }
 
     @SuppressWarnings("unchecked")
-    public synchronized T peek() {
+    public T peek() {
         if (this.isEmpty()) {
             throw new EmptyStackException();
         }
@@ -63,11 +67,11 @@ public class MyStack<T> {
         if (this == object) {
             return true;
         }
-        if (!(object instanceof MyStack)) {
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        MyStack<?> that = (MyStack<?>) object;
-        return Arrays.equals(array, that.array);
+        MyStack<?> other = (MyStack<?>) object;
+        return Arrays.equals(array, other.array);
     }
 
     @Override
@@ -79,14 +83,14 @@ public class MyStack<T> {
 
     @Override
     public String toString() {
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             return "Stack is empty.";
         }
         Object[] tempArray;
         tempArray = Arrays.stream(array).filter(Objects::nonNull)
                 .toArray(Object[]::new);
         reverseArray(tempArray);
-        return  Arrays.toString(tempArray);
+        return Arrays.toString(tempArray);
     }
 
     /**
@@ -102,4 +106,5 @@ public class MyStack<T> {
             array[i] = tempObject;
         }
     }
+
 }
