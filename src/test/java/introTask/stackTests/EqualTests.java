@@ -15,6 +15,14 @@ public class EqualTests {
     }
 
     @Test
+    public void equalsSameStack() {
+        MyStack<Integer> stack = new MyStack<>();
+        stack.push(1);
+
+        Assert.assertTrue(stack.equals(stack));
+    }
+
+    @Test
     public void equalsStack() {
         MyStack<Integer> stack0 = new MyStack<>();
         stack0.push(1); stack0.push(2);
