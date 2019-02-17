@@ -7,15 +7,15 @@ import java.util.Objects;
 public class MyStack<T> {
 
     private Object[] array;
-    private int maxSize;
+    private int capacity;
     private int top;
 
-    public MyStack(int maxSize) {
-        if (maxSize < 1) {
+    public MyStack(int capacity) {
+        if (capacity < 1) {
             throw new IllegalArgumentException();
         }
-        this.maxSize = maxSize;
-        this.array = new Object[maxSize];
+        this.capacity = capacity;
+        this.array = new Object[capacity];
         this.top = -1;
     }
 
@@ -24,9 +24,9 @@ public class MyStack<T> {
     }
 
     public void push(T element) {
-        if (top == maxSize - 1) {
-            maxSize *= 2;
-            Object[] tempArray = new Object[maxSize];
+        if (top == capacity - 1) {
+            capacity *= 2;
+            Object[] tempArray = new Object[capacity];
             System.arraycopy(array, 0, tempArray, 0, array.length);
             array = tempArray;
         }
@@ -72,13 +72,34 @@ public class MyStack<T> {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(maxSize, top);
+        int result = Objects.hash(capacity, top);
         result = 31 * result + Arrays.hashCode(array);
         return result;
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(array);
+        if (this.isEmpty()){
+            return "Stack is empty.";
+        }
+        Object[] tempArray;
+        tempArray = Arrays.stream(array).filter(Objects::nonNull)
+                .toArray(Object[]::new);
+        reverseArray(tempArray);
+        return  Arrays.toString(tempArray);
+    }
+
+    /**
+     * This is for "correct" stack output in toString
+     *
+     * @param array
+     */
+    private void reverseArray(Object[] array) {
+        Object tempObject;
+        for (int i = 0; i < array.length / 2; i++) {
+            tempObject = array[array.length - i - 1];
+            array[array.length - i - 1] = array[i];
+            array[i] = tempObject;
+        }
     }
 }
