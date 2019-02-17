@@ -25,7 +25,8 @@ public class EqualTests {
     @Test
     public void equalsStack() {
         MyStack<Integer> stack0 = new MyStack<>();
-        stack0.push(1); stack0.push(2);
+        stack0.push(1);
+        stack0.push(2);
         MyStack<Integer> stack1 = new MyStack<>();
         stack1.push(1);
 
@@ -60,9 +61,11 @@ public class EqualTests {
     @Test
     public void equalsAdditivity() {
         MyStack<Integer> stack0 = new MyStack<>();
-        stack0.push(1); stack0.push(2);
+        stack0.push(1);
+        stack0.push(2);
         MyStack<Integer> stack1 = new MyStack<>();
-        stack1.push(1); stack1.push(2);
+        stack1.push(1);
+        stack1.push(2);
 
         Assert.assertEquals(
                 stack0.equals(stack1), stack1.equals(stack0)
