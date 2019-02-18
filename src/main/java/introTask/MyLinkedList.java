@@ -38,18 +38,24 @@ public class MyLinkedList<T> {
     }
 
     public T remove(int index) {
-        checkIndex(index);
+        checkElementIndex(index);
 
         return unlink(getNodeByIndex(index));
     }
 
     public T get(int index) {
-        checkIndex(index);
+        checkElementIndex(index);
 
         return getNodeByIndex(index).item;
     }
 
     private void checkIndex(int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    private void checkElementIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }

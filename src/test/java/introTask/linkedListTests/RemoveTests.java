@@ -28,6 +28,12 @@ public class RemoveTests {
         list.add(item);
 
         Assert.assertEquals(item, list.remove(0));
+
+        for (int i = 0; i < 5; i++) {
+            list.add(i);
+        }
+
+        list.remove(0);
     }
     
 }

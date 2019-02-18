@@ -10,7 +10,8 @@ public class AddTests {
     @Test
     public void add() {
         MyLinkedList<Fraction> list = new MyLinkedList<>();
-        list.add(new Fraction(1,2));
+        list.add(new Fraction(1,2), 0);
+        list.add(new Fraction(1, 3), 0);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
