@@ -1,6 +1,7 @@
 package introTask.linkedListTests;
 
 import introTask.MyLinkedList;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class RemoveTests {
@@ -20,5 +21,13 @@ public class RemoveTests {
         list.remove(16);
     }
 
+    @Test
+    public void remove() {
+        MyLinkedList<Integer> list = new MyLinkedList<>();
+        Integer item = 11;
+        list.add(item);
+
+        Assert.assertEquals(item, list.remove(0));
+    }
     
 }
