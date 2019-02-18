@@ -124,23 +124,42 @@ public class MyLinkedList<T> {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) { return true; }
-        if (!(object instanceof MyLinkedList)) { return false; }
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof MyLinkedList)) {
+            return false;
+        }
         MyLinkedList<?> thatObject = (MyLinkedList<?>) object;
-        return size == thatObject.size &&
-                Objects.equals(first, thatObject.first) &&
-                Objects.equals(last, thatObject.last);
+        if (size != thatObject.size) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (!get(i).equals(thatObject.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(size, first, last);
+        int result = Objects.hash(size);
+        for (int i = 0; i < size; i++) {
+            result = 31 * result + get(i).hashCode();
+        }
+
+        return result;
     }
 
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        for (int i = 0; i < this.size; i++){
+        if (isEmpty()) {
+            string.append("List is empty.");
+            return string.toString();
+        }
+        for (int i = 0; i < this.size; i++) {
             string.append(this.get(i));
             string.append(' ');
         }
