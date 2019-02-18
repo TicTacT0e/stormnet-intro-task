@@ -15,7 +15,7 @@ public class PopTests {
     }
 
     @Test
-    public void popAfterOushing() {
+    public void popAfterPushing() {
         MyStack<Fraction> stack = new MyStack<>();
         Fraction fraction = new Fraction(1, 3);
         stack.push(fraction);
