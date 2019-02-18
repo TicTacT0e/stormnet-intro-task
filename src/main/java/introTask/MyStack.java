@@ -37,7 +37,7 @@ public class MyStack<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public synchronized T pop() {
+    public T pop() {
         if (this.isEmpty()) {
             throw new EmptyStackException();
         }
@@ -47,18 +47,18 @@ public class MyStack<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public synchronized T peek() {
+    public T peek() {
         if (this.isEmpty()) {
             throw new EmptyStackException();
         }
         return (T) array[top];
     }
 
-    public synchronized boolean isEmpty() {
+    public boolean isEmpty() {
         return top == -1;
     }
 
-    public synchronized int size() {
+    public int size() {
         return top + 1;
     }
 
