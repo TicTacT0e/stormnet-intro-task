@@ -21,6 +21,13 @@ public class AddTests {
         list.add(new Fraction(1, 2), 55);
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void addWithIndexLessThanZero() {
+        MyLinkedList<Fraction> list = new MyLinkedList<>();
+
+        list.add(new Fraction(1, 2), -2);
+    }
+
     @Test
     public void addWithIndex() {
         MyLinkedList<Fraction> list = new MyLinkedList<>();

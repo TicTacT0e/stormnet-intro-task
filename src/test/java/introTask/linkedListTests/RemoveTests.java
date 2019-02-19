@@ -21,6 +21,14 @@ public class RemoveTests {
         list.remove(16);
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void removeWhenIndexLessThanZero() {
+        MyLinkedList<Integer> list = new MyLinkedList<>();
+
+        list.add(0);
+        list.remove(-4);
+    }
+
     @Test
     public void remove() {
         MyLinkedList<Integer> list = new MyLinkedList<>();
