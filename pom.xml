@@ -82,6 +82,7 @@
         </configuration>
       </plugin>
 
+<<<<<<< HEAD
       <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -95,6 +96,8 @@
       </plugin>
       -->
 
+=======
+>>>>>>> f933bf5... 100% jacoco code coverage
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -114,7 +117,10 @@
           </execution>
         </executions>
       </plugin>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f933bf5... 100% jacoco code coverage
     </plugins>
   </build>
 </project>
