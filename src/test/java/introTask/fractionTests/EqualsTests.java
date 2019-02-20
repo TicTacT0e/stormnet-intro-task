@@ -18,13 +18,8 @@ public class EqualsTests {
     public void equalsFalse() {
         Assert.assertFalse(new Fraction(1, 6).equals(new Fraction(-1, 6)));
         Assert.assertFalse(new Fraction(5, 9).equals(new Fraction(3, 4)));
-<<<<<<< HEAD
-        Assert.assertFalse(new Fraction(1, 3).equals(new Fraction(1, 4)));
-        Assert.assertFalse(new Fraction(2, 3).equals(new Fraction(1, 3)));
-=======
         Assert.assertFalse(new Fraction(1, 2).equals(new Fraction(1, 3)));
         Assert.assertFalse(new Fraction(1, 3).equals(new Fraction(2, 3)));
->>>>>>> f933bf5... 100% jacoco code coverage
     }
 
     @Test
