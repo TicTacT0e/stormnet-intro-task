@@ -81,8 +81,8 @@
         </configuration>
       </plugin>
 
+      <!--
       <plugin>
-<<<<<<< HEAD
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M3</version>
@@ -92,10 +92,9 @@
           </excludes>
         </configuration>
       </plugin>
+      -->
 
       <plugin>
-=======
->>>>>>> f933bf5... 100% jacoco code coverage
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.7.7.201606060606</version>
@@ -114,10 +113,7 @@
           </execution>
         </executions>
       </plugin>
-<<<<<<< HEAD
 
-=======
->>>>>>> f933bf5... 100% jacoco code coverage
     </plugins>
 
   </build>
