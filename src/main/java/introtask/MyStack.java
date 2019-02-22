@@ -65,7 +65,7 @@ public class MyStack<T> {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         if (this == object) {
             return true;
         }
