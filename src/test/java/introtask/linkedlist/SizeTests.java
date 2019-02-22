@@ -1,6 +1,6 @@
-package introTask.linkedListTests;
+package introtask.linkedlist;
 
-import introTask.MyLinkedList;
+import introtask.MyLinkedList;
 import org.junit.Assert;
 import org.junit.Test;
 

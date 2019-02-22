@@ -1,4 +1,4 @@
-package introTask;
+package introtask;
 
 
 import java.util.Objects;

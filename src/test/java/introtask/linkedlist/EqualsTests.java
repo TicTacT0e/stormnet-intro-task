@@ -1,7 +1,7 @@
-package introTask.linkedListTests;
+package introtask.linkedlist;
 
-import introTask.Fraction;
-import introTask.MyLinkedList;
+import introtask.Fraction;
+import introtask.MyLinkedList;
 import org.junit.Assert;
 import org.junit.Test;
 
