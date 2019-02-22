@@ -123,25 +123,22 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>3.1.11</version>
-            </plugin>
-
         </plugins>
     </build>
 
-    <!--
+
     <reporting>
         <plugins>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>3.1.11</version>
+                <configuration>
+                    <threshold>High</threshold>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>
-    -->
+
 
 </project>
