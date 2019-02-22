@@ -2,6 +2,8 @@ package introtask;
 
 public class Fraction implements Comparable<Fraction> {
 
+    private final static int DEFAULT_DENOMINATOR = 1;
+
     private final int numerator;
     private final int denominator;
 
@@ -45,7 +47,7 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction(int numerator) {
-        this(numerator, 1);
+        this(numerator, DEFAULT_DENOMINATOR);
     }
 
     public final Fraction multiplication(final Fraction fraction) {
@@ -82,7 +84,7 @@ public class Fraction implements Comparable<Fraction> {
 
     private void simplify(Operands operands) {
         if (operands.getNumerator() == 0) {
-            operands.setDenominator(1);
+            operands.setDenominator(DEFAULT_DENOMINATOR);
             return;
         }
 
