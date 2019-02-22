@@ -50,18 +50,18 @@ public class Fraction implements Comparable<Fraction> {
         this(numerator, DEFAULT_DENOMINATOR);
     }
 
-    public final Fraction multiplication(final Fraction fraction) {
+    public Fraction multiplication(final Fraction fraction) {
         return new Fraction(numerator * fraction.getNumerator(),
                 denominator * fraction.getDenominator());
     }
 
-    public final Fraction add(final Fraction fraction) {
+    public Fraction add(final Fraction fraction) {
         return new Fraction(numerator * fraction.getDenominator()
                 + fraction.getNumerator() * denominator,
                 denominator * fraction.getDenominator());
     }
 
-    public final Fraction division(final Fraction fraction) {
+    public Fraction division(final Fraction fraction) {
         if (fraction.getNumerator() == 0) {
             throw new ArithmeticException();
         }
@@ -76,7 +76,7 @@ public class Fraction implements Comparable<Fraction> {
         return new Fraction(resultNumerator, resultDenominator);
     }
 
-    public final Fraction subtraction(final Fraction fraction) {
+    public Fraction subtraction(final Fraction fraction) {
         return new Fraction(numerator * fraction.getDenominator()
                 - fraction.getNumerator() * denominator,
                 denominator * fraction.getDenominator());
@@ -110,7 +110,7 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     @Override
-    public final boolean equals(final Object object) {
+    public boolean equals(final Object object) {
         if (this == object) {
             return true;
         }
@@ -123,7 +123,7 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         final int prime = 31;
         int hash = 1;
         hash = hash * prime + Integer.hashCode(numerator);
@@ -132,13 +132,13 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return (denominator == 1) ? "" + numerator
                 : numerator + "/" + denominator;
     }
 
     @Override
-    public final int compareTo(final Fraction fraction) {
+    public int compareTo(final Fraction fraction) {
         if (numerator * fraction.getDenominator() == fraction.getNumerator()
                 * denominator) {
             return 0;
