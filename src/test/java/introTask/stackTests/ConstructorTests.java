@@ -1,7 +1,7 @@
 package introTask.stackTests;
 
 import introTask.Fraction;
-import introTask.MyStack;
+import introtask.MyStack;
 import org.junit.Test;
 
 public class ConstructorTests {

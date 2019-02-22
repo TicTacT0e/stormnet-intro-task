@@ -1,6 +1,6 @@
 package introTask.stackTests;
 
-import introTask.MyStack;
+import introtask.MyStack;
 import org.junit.Assert;
 import org.junit.Test;
 

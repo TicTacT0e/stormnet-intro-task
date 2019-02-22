@@ -1,7 +1,7 @@
 package introTask.stackTests;
 
 import introTask.Fraction;
-import introTask.MyStack;
+import introtask.MyStack;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package introTask;
+package introtask;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
@@ -92,12 +92,7 @@ public class MyStack<T> {
         reverseArray(tempArray);
         return Arrays.toString(tempArray);
     }
-
-    /**
-     * This is for "correct" stack output in toString
-     *
-     * @param array
-     */
+    
     private void reverseArray(Object[] array) {
         Object tempObject;
         for (int i = 0; i < array.length / 2; i++) {
