@@ -1,4 +1,4 @@
-package introtask.fractionTests;
+package introtask.fraction;
 
 import introtask.Fraction;
 import org.junit.Assert;

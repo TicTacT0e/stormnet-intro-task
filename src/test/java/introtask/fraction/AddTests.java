@@ -1,6 +1,6 @@
-package introTask.fractionTests;
+package introtask.fraction;
 
-import introTask.Fraction;
+import introtask.Fraction;
 import org.junit.Assert;
 import org.junit.Test;
 
