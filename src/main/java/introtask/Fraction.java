@@ -6,10 +6,10 @@ public class Fraction implements Comparable<Fraction> {
     private final int denominator;
 
     private static class Operands {
-        int numerator;
-        int denominator;
+        private int numerator;
+        private int denominator;
 
-        Operands (int numerator, int denominator) {
+        Operands(int numerator, int denominator) {
             this.numerator = numerator;
             this.denominator = denominator;
         }
@@ -48,17 +48,18 @@ public class Fraction implements Comparable<Fraction> {
         this(numerator, 1);
     }
 
-    public Fraction multiplication(Fraction fraction) {
+    public final Fraction multiplication(final Fraction fraction) {
         return new Fraction(numerator * fraction.getNumerator(),
                 denominator * fraction.getDenominator());
     }
 
-    public Fraction add(Fraction fraction) {
-        return new Fraction(numerator * fraction.getDenominator() + fraction.getNumerator() * denominator,
+    public final Fraction add(final Fraction fraction) {
+        return new Fraction(numerator * fraction.getDenominator()
+                + fraction.getNumerator() * denominator,
                 denominator * fraction.getDenominator());
     }
 
-    public Fraction division(Fraction fraction) {
+    public final Fraction division(final Fraction fraction) {
         if (fraction.getNumerator() == 0) {
             throw new ArithmeticException();
         }
@@ -73,8 +74,9 @@ public class Fraction implements Comparable<Fraction> {
         return new Fraction(resultNumerator, resultDenominator);
     }
 
-    public Fraction subtraction(Fraction fraction) {
-        return new Fraction(numerator * fraction.getDenominator() - fraction.getNumerator() * denominator,
+    public final Fraction subtraction(final Fraction fraction) {
+        return new Fraction(numerator * fraction.getDenominator()
+                - fraction.getNumerator() * denominator,
                 denominator * fraction.getDenominator());
     }
 
@@ -84,10 +86,12 @@ public class Fraction implements Comparable<Fraction> {
             return;
         }
 
-        int limit = Math.min(operands.getNumerator(), operands.getDenominator());
+        int limit = Math.min(operands.getNumerator(),
+                operands.getDenominator());
 
         for (int i = 2; i <= Math.abs(limit); i++) {
-            if ((operands.getNumerator() % i == 0) && (operands.getDenominator() % i == 0)) {
+            if ((operands.getNumerator() % i == 0)
+                    && (operands.getDenominator() % i == 0)) {
                 operands.setNumerator(operands.getNumerator() / i);
                 operands.setDenominator(operands.getDenominator() / i);
                 simplify(operands);
@@ -104,7 +108,7 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public final boolean equals(final Object object) {
         if (this == object) {
             return true;
         }
@@ -112,11 +116,12 @@ public class Fraction implements Comparable<Fraction> {
             return false;
         }
         Fraction fraction = (Fraction) object;
-        return numerator == fraction.getNumerator() && denominator == fraction.getDenominator();
+        return numerator == fraction.getNumerator()
+                && denominator == fraction.getDenominator();
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         final int prime = 31;
         int hash = 1;
         hash = hash * prime + Integer.hashCode(numerator);
@@ -125,17 +130,19 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     @Override
-    public String toString() {
-        return (denominator == 1) ? "" + numerator :
-                numerator + "/" + denominator;
+    public final String toString() {
+        return (denominator == 1) ? "" + numerator
+                : numerator + "/" + denominator;
     }
 
     @Override
-    public int compareTo(Fraction fraction) {
-        if (numerator * fraction.getDenominator() == fraction.getNumerator() * denominator) {
+    public final int compareTo(final Fraction fraction) {
+        if (numerator * fraction.getDenominator() == fraction.getNumerator()
+                * denominator) {
             return 0;
         }
-        return (numerator * fraction.getDenominator() > fraction.getNumerator() * denominator) ?
-                1 : -1;
+        return (numerator * fraction.getDenominator()
+                > fraction.getNumerator() * denominator)
+                ? 1 : -1;
     }
 }
