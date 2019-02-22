@@ -1,18 +1,47 @@
-package introTask;
+package introtask;
 
 public class Fraction implements Comparable<Fraction> {
 
-    private int numerator;
-    private int denominator;
+    private final int numerator;
+    private final int denominator;
+
+    private static class Operands {
+        int numerator;
+        int denominator;
+
+        Operands (int numerator, int denominator) {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        }
+
+        void setNumerator(int numerator) {
+            this.numerator = numerator;
+        }
+
+        void setDenominator(int denominator) {
+            this.denominator = denominator;
+        }
+
+        int getNumerator() {
+            return numerator;
+        }
+
+        int getDenominator() {
+            return denominator;
+        }
+    }
 
     public Fraction(int numerator, int denominator) {
         if (denominator <= 0) {
             throw new ArithmeticException();
         }
 
-        this.numerator = numerator;
-        this.denominator = denominator;
-        simplify(this);
+        Operands operands = new Operands(numerator, denominator);
+
+        simplify(operands);
+
+        this.numerator = operands.getNumerator();
+        this.denominator = operands.getDenominator();
     }
 
     public Fraction(int numerator) {
@@ -20,17 +49,13 @@ public class Fraction implements Comparable<Fraction> {
     }
 
     public Fraction multiplication(Fraction fraction) {
-        Fraction result = new Fraction(numerator * fraction.getNumerator(),
+        return new Fraction(numerator * fraction.getNumerator(),
                 denominator * fraction.getDenominator());
-        simplify(result);
-        return result;
     }
 
     public Fraction add(Fraction fraction) {
-        Fraction result = new Fraction(numerator * fraction.getDenominator() + fraction.getNumerator() * denominator,
+        return new Fraction(numerator * fraction.getDenominator() + fraction.getNumerator() * denominator,
                 denominator * fraction.getDenominator());
-        simplify(result);
-        return result;
     }
 
     public Fraction division(Fraction fraction) {
@@ -44,49 +69,38 @@ public class Fraction implements Comparable<Fraction> {
             resultDenominator *= -1;
             resultNumerator *= -1;
         }
-        Fraction result = new Fraction(resultNumerator, resultDenominator);
-        simplify(result);
-        return result;
+
+        return new Fraction(resultNumerator, resultDenominator);
     }
 
     public Fraction subtraction(Fraction fraction) {
-        Fraction result = new Fraction(numerator * fraction.getDenominator() - fraction.getNumerator() * denominator,
+        return new Fraction(numerator * fraction.getDenominator() - fraction.getNumerator() * denominator,
                 denominator * fraction.getDenominator());
-        simplify(result);
-        return result;
     }
 
-    private void simplify(Fraction fraction) {
-        if (fraction.getNumerator() == 0) {
-            fraction.setDenominator(1);
+    private void simplify(Operands operands) {
+        if (operands.getNumerator() == 0) {
+            operands.setDenominator(1);
             return;
         }
 
-        int limit = Math.min(fraction.getNumerator(), fraction.getDenominator());
+        int limit = Math.min(operands.getNumerator(), operands.getDenominator());
 
         for (int i = 2; i <= Math.abs(limit); i++) {
-            if ((fraction.getNumerator() % i == 0) && (fraction.getDenominator() % i == 0)) {
-                fraction.setNumerator(fraction.getNumerator() / i);
-                fraction.setDenominator(fraction.getDenominator() / i);
-                simplify(fraction);
+            if ((operands.getNumerator() % i == 0) && (operands.getDenominator() % i == 0)) {
+                operands.setNumerator(operands.getNumerator() / i);
+                operands.setDenominator(operands.getDenominator() / i);
+                simplify(operands);
             }
         }
     }
 
-    public int getNumerator() {
+    private int getNumerator() {
         return numerator;
     }
 
-    public int getDenominator() {
+    private int getDenominator() {
         return denominator;
-    }
-
-    public void setNumerator(int numerator) {
-        this.numerator = numerator;
-    }
-
-    public void setDenominator(int denominator) {
-        this.denominator = denominator;
     }
 
     @Override
