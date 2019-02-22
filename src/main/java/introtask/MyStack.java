@@ -6,6 +6,8 @@ import java.util.Objects;
 
 public class MyStack<T> {
 
+    private static final int DEFAULT_CAPACITY = 10;
+
     private Object[] array;
     private int capacity;
     private int top;
@@ -21,7 +23,7 @@ public class MyStack<T> {
     }
 
     public MyStack() {
-        this(10);
+        this(DEFAULT_CAPACITY);
     }
 
 
