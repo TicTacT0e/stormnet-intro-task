@@ -139,8 +139,8 @@ public class Fraction implements Comparable<Fraction> {
 
     @Override
     public int compareTo(final Fraction fraction) {
-        if (numerator * fraction.getDenominator() == fraction.getNumerator()
-                * denominator) {
+        if (numerator * fraction.getDenominator()
+                == fraction.getNumerator() * denominator) {
             return 0;
         }
         return (numerator * fraction.getDenominator()
