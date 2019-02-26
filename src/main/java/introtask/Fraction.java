@@ -2,7 +2,7 @@ package introtask;
 
 public class Fraction implements Comparable<Fraction> {
 
-    private final static int DEFAULT_DENOMINATOR = 1;
+    private static final int DEFAULT_DENOMINATOR = 1;
 
     private final int numerator;
     private final int denominator;
@@ -101,11 +101,11 @@ public class Fraction implements Comparable<Fraction> {
         }
     }
 
-    private int getNumerator() {
+    public int getNumerator() {
         return numerator;
     }
 
-    private int getDenominator() {
+    public int getDenominator() {
         return denominator;
     }
 
@@ -139,8 +139,8 @@ public class Fraction implements Comparable<Fraction> {
 
     @Override
     public int compareTo(final Fraction fraction) {
-        if (numerator * fraction.getDenominator() == fraction.getNumerator()
-                * denominator) {
+        if (numerator * fraction.getDenominator()
+                == fraction.getNumerator() * denominator) {
             return 0;
         }
         return (numerator * fraction.getDenominator()

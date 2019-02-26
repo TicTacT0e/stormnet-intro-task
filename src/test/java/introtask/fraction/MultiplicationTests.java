@@ -13,7 +13,8 @@ public class MultiplicationTests {
 
         Fraction expected = new Fraction(1, 6);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator() == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator() == actual.getDenominator());
     }
 
     @Test
@@ -23,7 +24,10 @@ public class MultiplicationTests {
 
         Fraction expected = new Fraction(20);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test
@@ -33,7 +37,10 @@ public class MultiplicationTests {
 
         Fraction expected = new Fraction(0);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test
@@ -44,7 +51,10 @@ public class MultiplicationTests {
         Fraction actualFirst = fraction0.multiplication(fraction1);
         Fraction actualSecond = fraction1.multiplication(fraction0);
 
-        Assert.assertEquals(actualFirst, actualSecond);
+        Assert.assertTrue(actualFirst.getNumerator()
+                == actualSecond.getNumerator());
+        Assert.assertTrue(actualFirst.getDenominator()
+                == actualSecond.getDenominator());
     }
 
     @Test
@@ -53,7 +63,9 @@ public class MultiplicationTests {
         Fraction fraction1 = new Fraction(1);
         Fraction fraction2 = new Fraction(0);
 
-        Assert.assertEquals(fraction2, fraction1.multiplication(fraction2));
-        Assert.assertEquals(fraction0, fraction1.multiplication(fraction0));
+        Assert.assertTrue(0
+                == fraction1.multiplication(fraction2).getNumerator());
+        Assert.assertTrue(-1
+                == fraction1.multiplication(fraction0).getNumerator());
     }
 }
