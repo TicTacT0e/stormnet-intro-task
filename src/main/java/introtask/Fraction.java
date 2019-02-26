@@ -2,7 +2,7 @@ package introtask;
 
 public class Fraction implements Comparable<Fraction> {
 
-    private final static int DEFAULT_DENOMINATOR = 1;
+    private static final int DEFAULT_DENOMINATOR = 1;
 
     private final int numerator;
     private final int denominator;

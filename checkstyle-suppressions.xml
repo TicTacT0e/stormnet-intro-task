@@ -6,4 +6,9 @@
 
 <suppressions>
     <suppress checks="Javadoc" files="."/>
+    <suppress checks="DesignForExtensionCheck" files="."/>
+    <suppress checks="RegexpSinglelineCheck" files="."/>
+    <suppress checks="FinalParametersCheck" files="."/>
+    <suppress checks="HiddenFieldCheck" files="."/>
+    <suppress checks="AvoidInlineConditionalsCheck" files="."/>
 </suppressions>
