@@ -101,11 +101,11 @@ public class Fraction implements Comparable<Fraction> {
         }
     }
 
-    private int getNumerator() {
+    public int getNumerator() {
         return numerator;
     }
 
-    private int getDenominator() {
+    public int getDenominator() {
         return denominator;
     }
 

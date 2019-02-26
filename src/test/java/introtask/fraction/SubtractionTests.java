@@ -13,7 +13,10 @@ public class SubtractionTests {
 
         Fraction expected = new Fraction(2, 5);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test
@@ -23,7 +26,10 @@ public class SubtractionTests {
 
         Fraction expected = new Fraction(2);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test
@@ -33,7 +39,10 @@ public class SubtractionTests {
 
         Fraction actual = fraction0.subtraction(fraction1);
 
-        Assert.assertEquals(fraction0, actual);
+        Assert.assertTrue(fraction0.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(fraction0.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test
@@ -41,7 +50,9 @@ public class SubtractionTests {
         Fraction fraction0 = new Fraction(-1);
         Fraction fraction1 = new Fraction(1);
 
-        Assert.assertEquals(new Fraction(2), fraction1.subtraction(fraction0));
-        Assert.assertEquals(new Fraction(-2), fraction0.subtraction(fraction1));
+        Assert.assertTrue(new Fraction(2).getNumerator()
+                == fraction1.subtraction(fraction0).getNumerator());
+        Assert.assertTrue(new Fraction(-2).getNumerator()
+                == fraction0.subtraction(fraction1).getNumerator());
     }
 }

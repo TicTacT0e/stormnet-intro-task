@@ -13,8 +13,10 @@ public class AddTests {
 
         Fraction expected = new Fraction(5, 4);
 
-        Assert.assertEquals(expected, actual);
-
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test(expected = ArithmeticException.class)
@@ -28,7 +30,8 @@ public class AddTests {
 
         Fraction expected = new Fraction(-1);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
     }
 
     @Test
@@ -37,7 +40,10 @@ public class AddTests {
 
         Fraction expected = new Fraction(5, 8);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test
@@ -48,7 +54,10 @@ public class AddTests {
         Fraction actualFirst = fraction0.add(fraction1);
         Fraction actualSecond = fraction1.add(fraction0);
 
-        Assert.assertEquals(actualFirst, actualSecond);
+        Assert.assertTrue(actualFirst.getNumerator()
+                == actualSecond.getNumerator());
+        Assert.assertTrue(actualFirst.getDenominator()
+                == actualSecond.getDenominator());
     }
 
     @Test
@@ -57,7 +66,12 @@ public class AddTests {
         Fraction fraction1 = new Fraction(1);
         Fraction fraction2 = new Fraction(0);
 
-        Assert.assertEquals(fraction0.add(fraction1), fraction2);
+        Fraction actual = fraction0.add(fraction1);
+
+        Assert.assertTrue(actual.getNumerator()
+                == fraction2.getNumerator());
+        Assert.assertTrue(actual.getDenominator()
+                == fraction2.getDenominator());
     }
 
 }

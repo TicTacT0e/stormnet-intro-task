@@ -8,7 +8,7 @@ public class HashCodeTests {
 
     @Test
     public void hashCodeAdditivity() {
-        Assert.assertEquals(new Fraction(2).hashCode(),
+        Assert.assertTrue(new Fraction(2).hashCode() ==
                 new Fraction(2).hashCode());
     }
 }

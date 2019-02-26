@@ -13,7 +13,10 @@ public class DivisionTests {
 
         Fraction expected = new Fraction(-18, 21);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test(expected = ArithmeticException.class)
@@ -28,7 +31,10 @@ public class DivisionTests {
 
         Fraction expected = new Fraction(9, 8);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test(expected = ArithmeticException.class)
@@ -45,9 +51,13 @@ public class DivisionTests {
         Fraction fraction1 = new Fraction(1);
         Fraction fraction2 = new Fraction(0);
 
-        Assert.assertEquals(fraction0, fraction1.division(fraction0));
-        Assert.assertEquals(fraction2, fraction2.division(fraction1));
-        Assert.assertEquals(fraction0, fraction0.division(fraction1));
-        Assert.assertEquals(fraction1, fraction0.division(fraction0));
+        Assert.assertTrue(-1
+                == fraction1.division(fraction0).getNumerator());
+        Assert.assertTrue(0
+                == fraction2.division(fraction1).getNumerator());
+        Assert.assertTrue(-1
+                == fraction0.division(fraction1).getNumerator());
+        Assert.assertTrue(1
+                == fraction0.division(fraction0).getNumerator());
     }
 }
