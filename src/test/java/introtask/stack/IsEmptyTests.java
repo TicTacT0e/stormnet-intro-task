@@ -9,7 +9,7 @@ public class IsEmptyTests {
 
     @Test
     public void isEmptyBeforePushing() {
-        Assert.assertTrue(new MyStack<Fraction>(5).isEmpty());
+        Assert.assertTrue(new MyStack<Fraction>().isEmpty());
     }
 
     @Test

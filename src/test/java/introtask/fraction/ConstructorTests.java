@@ -21,8 +21,8 @@ public class ConstructorTests {
         int numeratorValue = (Integer) numeratorField.get(fraction);
         int denominatorValue = (Integer) denominatorField.get(fraction);
 
-        Assert.assertEquals(numeratorValue, numerator);
-        Assert.assertEquals(denominatorValue, denominator);
+        Assert.assertTrue(numeratorValue == numerator);
+        Assert.assertTrue(denominatorValue == denominator);
     }
 
     @Test
@@ -30,7 +30,10 @@ public class ConstructorTests {
         Fraction actual = new Fraction(3, 6);
         Fraction expected = new Fraction(1,2);
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.getNumerator()
+                == actual.getNumerator());
+        Assert.assertTrue(expected.getDenominator()
+                == actual.getDenominator());
     }
 
     @Test(expected = ArithmeticException.class)

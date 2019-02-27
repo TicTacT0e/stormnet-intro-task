@@ -12,6 +12,7 @@ public class PushTests {
         stack.push(new Fraction(1, 3));
     }
 
+    /*
     @Test
     public void pushWhenInitialCapacityLess() {
         int initialCapacity = 4;
@@ -20,4 +21,5 @@ public class PushTests {
             stack.push(i);
         }
     }
+    */
 }

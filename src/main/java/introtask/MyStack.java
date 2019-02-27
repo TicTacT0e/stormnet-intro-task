@@ -1,69 +1,44 @@
 package introtask;
 
-import java.util.Arrays;
 import java.util.EmptyStackException;
-import java.util.Objects;
 
 public class MyStack<T> {
 
-    private static final int DEFAULT_CAPACITY = 10;
-
-    private Object[] array;
-    private int capacity;
-    private int top;
-
-
-    public MyStack(int capacity) {
-        if (capacity < 1) {
-            throw new IllegalArgumentException();
-        }
-        this.capacity = capacity;
-        this.array = new Object[capacity];
-        this.top = -1;
-    }
+    private int topIndex;
+    private Node<T> top;
 
     public MyStack() {
-        this(DEFAULT_CAPACITY);
+        this.top = null;
+        this.topIndex = -1;
     }
-
 
     public void push(T element) {
-        if (top == capacity - 1) {
-            capacity *= 2;
-            Object[] tempArray = new Object[capacity];
-            System.arraycopy(array, 0, tempArray, 0, array.length);
-            array = tempArray;
-        }
-
-        array[++top] = element;
+        linkTop(element);
     }
 
-    @SuppressWarnings("unchecked")
     public T pop() {
         if (this.isEmpty()) {
             throw new EmptyStackException();
         }
-        T result = (T) array[top];
-        array[top--] = null;
-        return result;
+        return unlinkTop();
     }
 
-    @SuppressWarnings("unchecked")
     public T peek() {
         if (this.isEmpty()) {
             throw new EmptyStackException();
         }
-        return (T) array[top];
+        return getTopItem();
     }
 
     public boolean isEmpty() {
-        return top == -1;
+        return topIndex == -1;
     }
 
     public int size() {
-        return top + 1;
+        return topIndex + 1;
     }
 
+    /*
     @Override
     public boolean equals(final Object object) {
         if (this == object) {
@@ -78,7 +53,7 @@ public class MyStack<T> {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(capacity, top);
+        int result = Objects.hash(capacity, topIndex);
         result = 31 * result + Arrays.hashCode(array);
         return result;
     }
@@ -101,6 +76,40 @@ public class MyStack<T> {
             tempObject = array[array.length - i - 1];
             array[array.length - i - 1] = array[i];
             array[i] = tempObject;
+        }
+    }
+    */
+
+    private void linkTop(T item) {
+        if (top == null) {
+            top = new Node<>(item, null);
+        } else {
+            Node<T> oldTop = top;
+            top = new Node<>(item, oldTop);
+        }
+        topIndex++;
+    }
+
+    private T unlinkTop() {
+        T item = top.item;
+        top.item = null;
+        top = top.next;
+        topIndex--;
+
+        return item;
+    }
+
+    private T getTopItem() {
+        return top.item;
+    }
+
+    private static class Node<T> {
+        T item;
+        Node<T> next;
+
+        Node(T item, Node<T> next) {
+            this.item = item;
+            this.next = next;
         }
     }
 
