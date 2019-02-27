@@ -1,6 +1,9 @@
 package introtask;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.EmptyStackException;
+import java.util.Objects;
 
 public class MyStack<T> {
 
@@ -38,47 +41,47 @@ public class MyStack<T> {
         return topIndex + 1;
     }
 
-    /*
     @Override
-    public boolean equals(final Object object) {
+    public boolean equals(Object object) {
         if (this == object) {
             return true;
         }
-        if (object == null || getClass() != object.getClass()) {
+        if (!(object instanceof MyStack)) {
             return false;
         }
-        MyStack<?> other = (MyStack<?>) object;
-        return Arrays.equals(array, other.array);
+        MyStack<?> myStack = (MyStack<?>) object;
+        if (size() != myStack.size()) {
+            return false;
+        }
+        return stackElementsCompare(myStack);
     }
+
+    private boolean stackElementsCompare(MyStack<?> incomingStack) {
+        MyStack<?> tempThis = this;
+
+        for (int i = 0; getTopItem() != null
+        && i <= topIndex; i++) {
+            if (!tempThis.pop().equals(incomingStack.pop())) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(capacity, topIndex);
-        result = 31 * result + Arrays.hashCode(array);
-        return result;
+        int result = Objects.hash(topIndex);
+        return Objects.hash(topIndex, top);
     }
 
     @Override
     public String toString() {
-        if (this.isEmpty()) {
-            return "Stack is empty.";
-        }
-        Object[] tempArray;
-        tempArray = Arrays.stream(array).filter(Objects::nonNull)
-                .toArray(Object[]::new);
-        reverseArray(tempArray);
-        return Arrays.toString(tempArray);
+        return "MyStack{" +
+                "topIndex=" + topIndex +
+                ", top=" + top +
+                '}';
     }
-    
-    private void reverseArray(Object[] array) {
-        Object tempObject;
-        for (int i = 0; i < array.length / 2; i++) {
-            tempObject = array[array.length - i - 1];
-            array[array.length - i - 1] = array[i];
-            array[i] = tempObject;
-        }
-    }
-    */
 
     private void linkTop(T item) {
         if (top == null) {
@@ -112,5 +115,4 @@ public class MyStack<T> {
             this.next = next;
         }
     }
-
 }
