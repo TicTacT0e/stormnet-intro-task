@@ -1,7 +1,6 @@
 package introtask;
 
-import java.util.EmptyStackException;
-import java.util.Objects;
+import java.util.*;
 
 public class MyStack<T> {
 
@@ -39,6 +38,29 @@ public class MyStack<T> {
         return topIndex + 1;
     }
 
+    private void linkTop(T item) {
+        if (top == null) {
+            top = new Node<>(item, null);
+        } else {
+            Node<T> oldTop = top;
+            top = new Node<>(item, oldTop);
+        }
+        topIndex++;
+    }
+
+    private T unlinkTop() {
+        T item = top.getItem();
+        top.setItem(null);
+        top = top.getNext();
+        topIndex--;
+
+        return item;
+    }
+
+    private T getTopItem() {
+        return top.getItem();
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -54,63 +76,57 @@ public class MyStack<T> {
         return stackElementsCompare(myStack);
     }
 
-    private boolean stackElementsCompare(MyStack<?> incomingStack) {
-        MyStack<?> tempThis = this;
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(topIndex);
+        List<Node<?>> thisList = getList();
+        for (int i = 0; i < size(); i++) {
+            result = 31 * result + Objects
+                    .hashCode(thisList.get(i).getItem());
+        }
+        return result;
+    }
 
-        for (int i = 0; getTopItem() != null
-                && i <= topIndex; i++) {
-            if (!tempThis.pop().equals(incomingStack.pop())) {
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        if (isEmpty()) {
+            string.append("Stack is empty.");
+            return string.toString();
+        }
+        List<Node<?>> thisList = getList();
+        for (int i = size() - 1; i != 0; i--) {
+            string.append(thisList.get(i).getItem());
+            string.append(' ');
+        }
+        return string.toString();
+    }
+
+    private boolean stackElementsCompare(MyStack<?> incomingStack) {
+        List<Node<?>> thisList = getList();
+        List<Node<?>> thatList = incomingStack.getList();
+
+        for (int i = 0; i < thisList.size(); i++){
+            if (!thisList.get(i).getItem()
+                    .equals(thatList.get(i).getItem())){
                 return false;
             }
         }
         return true;
     }
 
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(topIndex);
-        return Objects.hash(topIndex, top);
-    }
-
-    @Override
-    public String toString() {
-        return "MyStack{" +
-                "topIndex=" + topIndex +
-                ", top=" + top +
-                '}';
-    }
-
-    private void linkTop(T item) {
+    private List<Node<?>> getList() {
         if (top == null) {
-            top = new Node<>(item, null);
-        } else {
-            Node<T> oldTop = top;
-            top = new Node<>(item, oldTop);
+            throw new EmptyStackException();
         }
-        topIndex++;
-    }
-
-    private T unlinkTop() {
-        T item = top.item;
-        top.item = null;
-        top = top.next;
-        topIndex--;
-
-        return item;
-    }
-
-    private T getTopItem() {
-        return top.item;
-    }
-
-    private static class Node<T> {
-        T item;
-        Node<T> next;
-
-        Node(T item, Node<T> next) {
-            this.item = item;
-            this.next = next;
+        List<Node<?>> list = new ArrayList<>();
+        Node<?> tempNode = top;
+        list.add(top);
+        while (tempNode.getNext() != null) {
+            list.add(tempNode.getNext());
+            tempNode = tempNode.getNext();
         }
+        return list;
     }
+
 }
