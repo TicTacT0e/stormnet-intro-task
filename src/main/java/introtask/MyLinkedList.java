@@ -46,7 +46,7 @@ public class MyLinkedList<T> {
     public T get(int index) {
         checkElementIndex(index);
 
-        return getNodeByIndex(index).item;
+        return getNodeByIndex(index).getItem();
     }
 
     private void checkIndex(int index) {
@@ -68,26 +68,26 @@ public class MyLinkedList<T> {
         if (index < size / 2) {
             tempNode = first;
             for (int i = 0; i < index; i++) {
-                tempNode = tempNode.next;
+                tempNode = tempNode.getNext();
             }
             return tempNode;
         } else {
             tempNode = last;
             for (int i = size - 1; i > index; i--) {
-                tempNode = tempNode.previous;
+                tempNode = tempNode.getPrevious();
             }
             return tempNode;
         }
     }
 
     private void link(T item, Node<T> nextNode) {
-        Node<T> previous = nextNode.previous;
+        Node<T> previous = nextNode.getPrevious();
         Node<T> newNode = new Node<>(previous, item, nextNode);
-        nextNode.previous = newNode;
+        nextNode.setPrevious(newNode);
         if (previous == null) {
             first = newNode;
         } else {
-            previous.next = newNode;
+            previous.setNext(newNode);
         }
         size++;
     }
@@ -99,31 +99,31 @@ public class MyLinkedList<T> {
         if (isEmpty()) {
             first = last;
         } else {
-            oldLast.next = last;
+            oldLast.setNext(last);
         }
         size++;
     }
 
     private T unlink(Node<T> node) {
-        T item = node.item;
-        Node<T> next = node.next;
-        Node<T> previous = node.previous;
+        T item = node.getItem();
+        Node<T> next = node.getNext();
+        Node<T> previous = node.getPrevious();
 
         if (previous == null) {
             first = next;
         } else {
-            previous.next = next;
-            node.previous = null;
+            previous.setNext(next);
+            node.setPrevious(null);
         }
 
         if (next == null) {
             last = previous;
         } else {
-            next.previous = previous;
-            node.next = null;
+            next.setPrevious(previous);
+            node.setNext(null);
         }
 
-        node.item = null;
+        node.setItem(null);
         size--;
         return item;
     }
@@ -170,18 +170,6 @@ public class MyLinkedList<T> {
             string.append(' ');
         }
         return string.toString();
-    }
-
-    private static class Node<T> {
-        T item;
-        Node<T> next;
-        Node<T> previous;
-
-        Node(Node<T> previous, T item, Node<T> next) {
-            this.previous = previous;
-            this.item = item;
-            this.next = next;
-        }
     }
 }
 
