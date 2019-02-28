@@ -95,16 +95,19 @@ public class MyStack<T> {
             return string.toString();
         }
         List<Node<?>> thisList = getList();
-        for (int i = size() - 1; i != 0; i--) {
+        string.append(' ');
+        for (int i = 0; i < thisList.size(); i++) {
             string.append(thisList.get(i).getItem());
             string.append(' ');
         }
+
         return string.toString();
     }
 
     private boolean stackElementsCompare(MyStack<?> incomingStack) {
         List<Node<?>> thisList = getList();
         List<Node<?>> thatList = incomingStack.getList();
+
 
         for (int i = 0; i < thisList.size(); i++){
             if (!thisList.get(i).getItem()

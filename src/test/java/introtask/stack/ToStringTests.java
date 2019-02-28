@@ -12,15 +12,21 @@ public class ToStringTests {
         Assert.assertEquals("Stack is empty.", stack.toString());
     }
 
-    /*
+
     @Test
     public void toStringAfterPush() {
-        int capacity = 12;
-        MyStack<Integer> stack = new MyStack<>(capacity);
-        for (int i = 0; i < capacity / 2; i++){
+        MyStack<Integer> stack = new MyStack<>();
+        StringBuilder stringBuilder = new StringBuilder();
+        int capacity = 6;
+
+        stringBuilder.append(' ');
+        for (int i = 0; i < capacity; i++){
             stack.push(i);
+            stringBuilder.append(i);
+            stringBuilder.append(' ');
         }
-        Assert.assertEquals("[5, 4, 3, 2, 1, 0]", stack.toString());
+        Assert.assertEquals(new StringBuffer(stringBuilder).reverse().toString(),
+                stack.toString());
     }
-    */
+
 }
