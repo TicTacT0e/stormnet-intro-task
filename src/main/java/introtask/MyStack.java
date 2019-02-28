@@ -1,7 +1,5 @@
 package introtask;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.Objects;
 
@@ -60,14 +58,14 @@ public class MyStack<T> {
         MyStack<?> tempThis = this;
 
         for (int i = 0; getTopItem() != null
-        && i <= topIndex; i++) {
+                && i <= topIndex; i++) {
             if (!tempThis.pop().equals(incomingStack.pop())) {
                 return false;
             }
         }
         return true;
     }
-    
+
 
     @Override
     public int hashCode() {
