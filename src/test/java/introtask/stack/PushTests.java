@@ -11,15 +11,4 @@ public class PushTests {
         MyStack<Fraction> stack = new MyStack<>();
         stack.push(new Fraction(1, 3));
     }
-
-    /*
-    @Test
-    public void pushWhenInitialCapacityLess() {
-        int initialCapacity = 4;
-        MyStack<Integer> stack = new MyStack<>(initialCapacity);
-        for (int i = 0; i < initialCapacity * 3; i++) {
-            stack.push(i);
-        }
-    }
-    */
 }

@@ -1,6 +1,9 @@
 package introtask;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.List;
+import java.util.Objects;
 
 public class MyStack<T> {
 
@@ -12,33 +15,7 @@ public class MyStack<T> {
         this.topIndex = -1;
     }
 
-    public void push(T element) {
-        linkTop(element);
-    }
-
-    public T pop() {
-        if (this.isEmpty()) {
-            throw new EmptyStackException();
-        }
-        return unlinkTop();
-    }
-
-    public T peek() {
-        if (this.isEmpty()) {
-            throw new EmptyStackException();
-        }
-        return getTopItem();
-    }
-
-    public boolean isEmpty() {
-        return topIndex == -1;
-    }
-
-    public int size() {
-        return topIndex + 1;
-    }
-
-    private void linkTop(T item) {
+    public void push(T item) {
         if (top == null) {
             top = new Node<>(item, null);
         } else {
@@ -48,7 +25,10 @@ public class MyStack<T> {
         topIndex++;
     }
 
-    private T unlinkTop() {
+    public T pop() {
+        if (this.isEmpty()) {
+            throw new EmptyStackException();
+        }
         T item = top.getItem();
         top.setItem(null);
         top = top.getNext();
@@ -57,8 +37,19 @@ public class MyStack<T> {
         return item;
     }
 
-    private T getTopItem() {
+    public T peek() {
+        if (this.isEmpty()) {
+            throw new EmptyStackException();
+        }
         return top.getItem();
+    }
+
+    public boolean isEmpty() {
+        return topIndex == -1;
+    }
+
+    public int size() {
+        return topIndex + 1;
     }
 
     @Override
@@ -78,10 +69,11 @@ public class MyStack<T> {
 
     @Override
     public int hashCode() {
+        final int hash = 31;
         int result = Objects.hash(topIndex);
         List<Node<?>> thisList = getList();
         for (int i = 0; i < size(); i++) {
-            result = 31 * result + Objects
+            result = hash * result + Objects
                     .hashCode(thisList.get(i).getItem());
         }
         return result;
@@ -96,8 +88,8 @@ public class MyStack<T> {
         }
         List<Node<?>> thisList = getList();
         string.append(' ');
-        for (int i = 0; i < thisList.size(); i++) {
-            string.append(thisList.get(i).getItem());
+        for (Node<?> node : thisList) {
+            string.append(node.getItem());
             string.append(' ');
         }
 
@@ -109,9 +101,9 @@ public class MyStack<T> {
         List<Node<?>> thatList = incomingStack.getList();
 
 
-        for (int i = 0; i < thisList.size(); i++){
+        for (int i = 0; i < thisList.size(); i++) {
             if (!thisList.get(i).getItem()
-                    .equals(thatList.get(i).getItem())){
+                    .equals(thatList.get(i).getItem())) {
                 return false;
             }
         }

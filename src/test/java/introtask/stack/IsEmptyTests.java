@@ -25,6 +25,5 @@ public class IsEmptyTests {
         stack.push("test");
         stack.pop();
         Assert.assertTrue(stack.isEmpty());
-
     }
 }

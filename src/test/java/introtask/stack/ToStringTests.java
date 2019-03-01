@@ -20,12 +20,13 @@ public class ToStringTests {
         int capacity = 6;
 
         stringBuilder.append(' ');
-        for (int i = 0; i < capacity; i++){
+        for (int i = 0; i < capacity; i++) {
             stack.push(i);
             stringBuilder.append(i);
             stringBuilder.append(' ');
         }
-        Assert.assertEquals(new StringBuffer(stringBuilder).reverse().toString(),
+        stringBuilder.reverse();
+        Assert.assertEquals(stringBuilder.toString(),
                 stack.toString());
     }
 

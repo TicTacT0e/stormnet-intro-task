@@ -69,9 +69,8 @@ public class EqualTests {
         stack1.push(1);
         stack1.push(2);
 
-        Assert.assertEquals(
-                stack0.equals(stack1), stack1.equals(stack0)
-        );
+        Assert.assertTrue(stack0.equals(stack1)
+                == stack1.equals(stack0));
     }
 
     @Test
@@ -87,13 +86,13 @@ public class EqualTests {
 
     @Test
     public void equalsNull() {
-        Assert.assertFalse(new MyStack<Fraction>().equals(null));
+        Assert.assertFalse(new MyStack<Fraction>()
+                .equals(null));
     }
 
     @Test
     public void equalsDifferentObject() {
-        Assert.assertFalse(
-                new MyStack<String>().equals(new Fraction(1))
-        );
+        Assert.assertFalse(new MyStack<String>()
+                .equals(new Fraction(1)));
     }
 }
