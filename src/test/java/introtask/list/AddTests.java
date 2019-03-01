@@ -15,8 +15,6 @@ public class AddTests {
         list.add(1);
         list.add(3);
 
-        System.out.print(list.get(list.size() - 1));
-
         for (int i = 0; i < list.size(); i++) {
             System.out.print(list.get(i));
             System.out.print(' ');
@@ -46,6 +44,28 @@ public class AddTests {
             System.out.print(' ');
         }
         System.out.println();
+
+        list.remove(2);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i));
+            System.out.print(' ');
+        }
+        System.out.println();
+
+        list.remove(0);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i));
+            System.out.print(' ');
+        }
+        System.out.println();
+
+        list.remove(list.size() - 1);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i));
+            System.out.print(' ');
+        }
+        System.out.println();
+
     }
 
     @Test
