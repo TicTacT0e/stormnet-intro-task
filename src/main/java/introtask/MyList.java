@@ -1,6 +1,8 @@
 package introtask;
 
 
+import java.util.Objects;
+
 public class MyList<T> {
 
     private Node<T> first;
@@ -57,7 +59,7 @@ public class MyList<T> {
             first = node.getNext();
         } else {
             Node<T> tempNode = first;
-            for (int i = 0; i < index - 1; i++) {
+            while (tempNode.getNext() != node) {
                 tempNode = tempNode.getNext();
             }
             tempNode.setNext(node.getNext());
@@ -122,7 +124,52 @@ public class MyList<T> {
         size++;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof MyList)) {
+            return false;
+        }
 
+        MyList<?> thatList = (MyList<?>) object;
+
+        if (size != thatList.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < size; i++) {
+            if (!get(i).equals(thatList.get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int hash = 31;
+        int result = Objects.hash(size);
+        for (int i = 0; i < size; i++) {
+            result = hash * result * get(i).hashCode();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (isEmpty()) {
+            stringBuilder.append("List is empty.");
+        } else {
+            for (int i = 0; i < this.size; i++) {
+                stringBuilder.append(get(i));
+                stringBuilder.append(' ');
+            }
+        }
+        return stringBuilder.toString();
+    }
 }
 
 

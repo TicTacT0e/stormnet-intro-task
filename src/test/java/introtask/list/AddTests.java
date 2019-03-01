@@ -8,67 +8,6 @@ import org.junit.Test;
 public class AddTests {
 
     @Test
-    public void someTest() {
-        MyList<Integer> list = new MyList<>();
-
-        list.add(0);
-        list.add(1);
-        list.add(3);
-
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
-            System.out.print(' ');
-        }
-        System.out.println();
-
-        list.add(55 ,1);
-
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
-            System.out.print(' ');
-        }
-        System.out.println();
-
-        list.add(66, 0);
-
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
-            System.out.print(' ');
-        }
-        System.out.println();
-
-        list.add(13, list.size());
-
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
-            System.out.print(' ');
-        }
-        System.out.println();
-
-        list.remove(2);
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
-            System.out.print(' ');
-        }
-        System.out.println();
-
-        list.remove(0);
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
-            System.out.print(' ');
-        }
-        System.out.println();
-
-        list.remove(list.size() - 1);
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
-            System.out.print(' ');
-        }
-        System.out.println();
-
-    }
-
-    @Test
     public void add() {
         MyList<Fraction> list = new MyList<>();
         list.add(new Fraction(1, 2), 0);
@@ -101,6 +40,15 @@ public class AddTests {
         }
         list.add(specialFraction, indexOfSpecialFraction);
 
-        Assert.assertEquals(specialFraction, list.get(indexOfSpecialFraction));
+        Assert.assertEquals(specialFraction,
+                list.get(indexOfSpecialFraction));
+    }
+
+    @Test
+    public void addWithIndexEdgeValue() {
+        MyList<Fraction> list = new MyList<>();
+
+        list.add(new Fraction(1), 0);
+        list.add(new Fraction(1), list.size());
     }
 }

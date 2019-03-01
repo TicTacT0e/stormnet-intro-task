@@ -31,17 +31,30 @@ public class RemoveTests {
 
     @Test
     public void remove() {
+        int size = 10;
+        int indexOfRemovedItem = 4;
+        int item = 4;
         MyList<Integer> list = new MyList<>();
-        Integer item = 11;
-        list.add(item);
-
-        Assert.assertEquals(item, list.remove(0));
-
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < size; i++) {
             list.add(i);
         }
+        int removedItem = list.remove(indexOfRemovedItem);
 
-        list.remove(0);
+        Assert.assertTrue(item == removedItem);
     }
-    
+
+    @Test
+    public void removeWithIndexEdgeValue() {
+        MyList<Integer> list = new MyList<>();
+        Integer item = 1;
+        list.add(item);
+
+        Assert.assertTrue(item.equals(list.remove(0)));
+
+        list.add(item);
+
+        Assert.assertTrue(item
+                .equals(list.remove(list.size() - 1)));
+    }
+
 }

@@ -19,12 +19,13 @@ public class ToStringTests {
         MyList<Integer> list = new MyList<>();
         int quantity = 10;
 
-        for (int i = 0; i < quantity; i++){
+        for (int i = 0; i < quantity; i++) {
             list.add(i);
             stringBuilder.append(i);
             stringBuilder.append(' ');
         }
 
-        Assert.assertEquals(stringBuilder.toString(), list.toString());
+        Assert.assertEquals(stringBuilder.toString(),
+                list.toString());
     }
 }

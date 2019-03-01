@@ -89,7 +89,8 @@ public class EqualsTests {
     @Test
     public void equalsDifferentObject() {
         Assert.assertFalse(
-                new MyList<Fraction>().equals(new Fraction(1))
+                new MyList<Fraction>()
+                        .equals(new Fraction(1))
         );
     }
 }

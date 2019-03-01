@@ -19,12 +19,32 @@ public class GetTests {
         list.get(4);
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void getWithIndexLessThanZero() {
+        MyList<Integer> list = new MyList<>();
+        list.add(1);
+        list.get(-1);
+    }
+
     @Test
     public void get() {
         MyList<Integer> list = new MyList<>();
         Integer item = 11;
         list.add(item);
 
-        Assert.assertEquals(item, list.get(0));
+        Assert.assertTrue(item.equals(list.get(0)));
     }
+
+    @Test
+    public void getWithIndexEdgeValue() {
+        int item = 1;
+        MyList<Integer> list = new MyList<>();
+        list.add(item);
+
+        Assert.assertTrue(item
+                == list.get(0));
+        Assert.assertTrue(item
+                == list.get(list.size() - 1));
+    }
+
 }

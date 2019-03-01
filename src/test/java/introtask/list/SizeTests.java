@@ -8,7 +8,7 @@ public class SizeTests {
 
     @Test
     public void sizeBeforeAddItem() {
-        Assert.assertEquals(0, new MyList<Integer>().size());
+        Assert.assertTrue(0 == new MyList<Integer>().size());
     }
 
     @Test
@@ -20,7 +20,7 @@ public class SizeTests {
             list.add(i);
         }
 
-        Assert.assertEquals(quantity, list.size());
+        Assert.assertTrue(quantity == list.size());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class SizeTests {
         list.add(1);
         list.remove(0);
 
-        Assert.assertEquals(0, list.size());
+        Assert.assertTrue(0 == list.size());
     }
 
     @Test
@@ -38,6 +38,6 @@ public class SizeTests {
         list.add(1);
         list.get(0);
 
-        Assert.assertEquals(1, list.size());
+        Assert.assertTrue(1 == list.size());
     }
 }
