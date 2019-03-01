@@ -65,9 +65,8 @@ public class EqualsTests {
         MyList<Integer> list1 = new MyList<>();
         list1.add(3);
 
-        Assert.assertEquals(
-                list0.equals(list1), list1.equals(list0)
-        );
+        Assert.assertTrue(list0.equals(list1)
+                == list1.equals(list0));
     }
 
     @Test
@@ -83,7 +82,8 @@ public class EqualsTests {
 
     @Test
     public void equalsNull() {
-        Assert.assertFalse(new MyList<Integer>().equals(null));
+        Assert.assertFalse(new MyList<Integer>()
+                .equals(null));
     }
 
     @Test

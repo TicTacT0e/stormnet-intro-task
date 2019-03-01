@@ -30,16 +30,18 @@ public class EqualsTests {
 
     @Test
     public void equalsDifferentObject() {
-        Assert.assertFalse(new Fraction(1, 2).equals(new StringBuilder("some-string")));
+        Assert.assertFalse(new Fraction(1, 2)
+                .equals(new StringBuilder("some-string")));
     }
 
     @Test
     public void equalsNull() {
-        Assert.assertFalse(new Fraction(4, 5).equals(null));
+        Assert.assertFalse(new Fraction(4, 5)
+                .equals(null));
     }
 
     @Test
-    public void equalsAdditivity(){
+    public void equalsAdditivity() {
         Fraction fraction0 = new Fraction(1, 3);
         Fraction fraction1 = new Fraction(1, 3);
 

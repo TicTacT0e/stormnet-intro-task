@@ -34,11 +34,11 @@ public class HashCodeTests {
 
     @Test
     public void hashCodeSameList() {
-        MyList<Double> list0 = new MyList<>();
-        list0.add(1.0);
-        list0.add(2.0);
+        MyList<Double> list = new MyList<>();
+        list.add(1.0);
+        list.add(2.0);
 
-        Assert.assertTrue(list0.hashCode()
-                == list0.hashCode());
+        Assert.assertTrue(list.hashCode()
+                == list.hashCode());
     }
 }
