@@ -1,7 +1,7 @@
-package introtask.linkedlist;
+package introtask.list;
 
 import introtask.Fraction;
-import introtask.MyLinkedList;
+import introtask.MyList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,13 +10,13 @@ public class EqualsTests {
     @Test
     public void equalsEmptyList() {
         Assert.assertTrue(
-                new MyLinkedList<Integer>().equals(new MyLinkedList<Integer>())
+                new MyList<Integer>().equals(new MyList<Integer>())
         );
     }
 
     @Test
     public void equalsSameList() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
         list.add(1);
 
         Assert.assertTrue(list.equals(list));
@@ -24,10 +24,10 @@ public class EqualsTests {
 
     @Test
     public void equalsLists() {
-        MyLinkedList<Integer> list0 = new MyLinkedList<>();
+        MyList<Integer> list0 = new MyList<>();
         list0.add(0);
         list0.add(1);
-        MyLinkedList<Integer> list1 = new MyLinkedList<>();
+        MyList<Integer> list1 = new MyList<>();
         list1.add(0);
 
         Assert.assertFalse(list0.equals(list1));
@@ -35,9 +35,9 @@ public class EqualsTests {
 
     @Test
     public void equalsAfterGet() {
-        MyLinkedList<Integer> list0 = new MyLinkedList<>();
+        MyList<Integer> list0 = new MyList<>();
         list0.add(0);
-        MyLinkedList<Integer> list1 = new MyLinkedList<>();
+        MyList<Integer> list1 = new MyList<>();
         list1.add(0);
 
         list0.get(0);
@@ -47,10 +47,10 @@ public class EqualsTests {
 
     @Test
     public void equalsAfterRemove() {
-        MyLinkedList<Integer> list0 = new MyLinkedList<>();
+        MyList<Integer> list0 = new MyList<>();
         list0.add(0);
         list0.add(1);
-        MyLinkedList<Integer> list1 = new MyLinkedList<>();
+        MyList<Integer> list1 = new MyList<>();
         list1.add(0);
 
         list0.remove(1);
@@ -60,9 +60,9 @@ public class EqualsTests {
 
     @Test
     public void equalsAdditivity() {
-        MyLinkedList<Integer> list0 = new MyLinkedList<>();
+        MyList<Integer> list0 = new MyList<>();
         list0.add(3);
-        MyLinkedList<Integer> list1 = new MyLinkedList<>();
+        MyList<Integer> list1 = new MyList<>();
         list1.add(3);
 
         Assert.assertEquals(
@@ -72,8 +72,8 @@ public class EqualsTests {
 
     @Test
     public void equalsListWithDifferentTypes() {
-        MyLinkedList<Fraction> list0 = new MyLinkedList<>();
-        MyLinkedList<Integer> list1 = new MyLinkedList<>();
+        MyList<Fraction> list0 = new MyList<>();
+        MyList<Integer> list1 = new MyList<>();
 
         list0.add(new Fraction(1, 2));
         list1.add(1);
@@ -83,13 +83,13 @@ public class EqualsTests {
 
     @Test
     public void equalsNull() {
-        Assert.assertFalse(new MyLinkedList<Integer>().equals(null));
+        Assert.assertFalse(new MyList<Integer>().equals(null));
     }
 
     @Test
     public void equalsDifferentObject() {
         Assert.assertFalse(
-                new MyLinkedList<Fraction>().equals(new Fraction(1))
+                new MyList<Fraction>().equals(new Fraction(1))
         );
     }
 }

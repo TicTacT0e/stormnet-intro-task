@@ -1,6 +1,6 @@
-package introtask.linkedlist;
+package introtask.list;
 
-import introtask.MyLinkedList;
+import introtask.MyList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,14 +9,14 @@ public class ToStringTests {
     @Test
     public void toStringWithEmptyList() {
         Assert.assertEquals(
-                "List is empty.", new MyLinkedList<Integer>().toString()
+                "List is empty.", new MyList<Integer>().toString()
         );
     }
 
     @Test
     public void toStringWhenListFill() {
         StringBuilder stringBuilder = new StringBuilder();
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
         int quantity = 10;
 
         for (int i = 0; i < quantity; i++){

@@ -1,6 +1,6 @@
-package introtask.linkedlist;
+package introtask.list;
 
-import introtask.MyLinkedList;
+import introtask.MyList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,14 +8,14 @@ public class RemoveTests {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void removeWhenListIsEmpty() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
 
         list.remove(0);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void removeWhenIndexBiggerThanSize() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
 
         list.add(0);
         list.remove(16);
@@ -23,7 +23,7 @@ public class RemoveTests {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void removeWhenIndexLessThanZero() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
 
         list.add(0);
         list.remove(-4);
@@ -31,7 +31,7 @@ public class RemoveTests {
 
     @Test
     public void remove() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
         Integer item = 11;
         list.add(item);
 

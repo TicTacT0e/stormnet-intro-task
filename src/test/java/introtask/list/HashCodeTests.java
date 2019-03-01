@@ -1,6 +1,6 @@
-package introtask.linkedlist;
+package introtask.list;
 
-import introtask.MyLinkedList;
+import introtask.MyList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,9 +8,9 @@ public class HashCodeTests {
 
     @Test
     public void hashCodeAdditivity() {
-        MyLinkedList<Integer> list0 = new MyLinkedList<>();
+        MyList<Integer> list0 = new MyList<>();
         list0.add(1); list0.add(2);
-        MyLinkedList<Integer> list1 = new MyLinkedList<>();
+        MyList<Integer> list1 = new MyList<>();
         list1.add(1); list1.add(2);
 
         Assert.assertEquals(list0.hashCode(), list1.hashCode());

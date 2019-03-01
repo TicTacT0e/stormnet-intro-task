@@ -1,6 +1,6 @@
-package introtask.linkedlist;
+package introtask.list;
 
-import introtask.MyLinkedList;
+import introtask.MyList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,14 +8,14 @@ public class SizeTests {
 
     @Test
     public void sizeBeforeAddItem() {
-        Assert.assertEquals(0, new MyLinkedList<Integer>().size());
+        Assert.assertEquals(0, new MyList<Integer>().size());
     }
 
     @Test
     public void sizeAfterAddItems() {
         int quantity = (int) (Math.random() * 666);
 
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
         for (int i = 0; i < quantity; i++) {
             list.add(i);
         }
@@ -25,7 +25,7 @@ public class SizeTests {
 
     @Test
     public void sizeAfterRemoveItem() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
         list.add(1);
         list.remove(0);
 
@@ -34,7 +34,7 @@ public class SizeTests {
 
     @Test
     public void sizeAfterGetItems() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
         list.add(1);
         list.get(0);
 

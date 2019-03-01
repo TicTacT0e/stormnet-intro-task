@@ -1,6 +1,6 @@
-package introtask.linkedlist;
+package introtask.list;
 
-import introtask.MyLinkedList;
+import introtask.MyList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,20 +8,20 @@ public class GetTests {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void getWhenListIsEmpty() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
         list.get(0);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void getWithIndexBiggerThanSize() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
         list.add(1);
         list.get(4);
     }
 
     @Test
     public void get() {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
+        MyList<Integer> list = new MyList<>();
         Integer item = 11;
         list.add(item);
 
