@@ -19,7 +19,6 @@ public class ToStringTests {
         StringBuilder stringBuilder = new StringBuilder();
         int capacity = 6;
 
-        stringBuilder.append(' ');
         for (int i = 0; i < capacity; i++) {
             stack.push(i);
             stringBuilder.append(i);

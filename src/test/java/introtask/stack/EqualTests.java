@@ -9,7 +9,7 @@ import java.util.EmptyStackException;
 
 public class EqualTests {
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void equalsEmptyStack() {
         Assert.assertTrue(
                 new MyStack<Integer>().equals(new MyStack<Integer>())
@@ -42,7 +42,7 @@ public class EqualTests {
         MyStack<Integer> stack1 = new MyStack<>();
         stack1.push(1);
 
-        //stack0.peek();
+        stack0.peek();
 
         Assert.assertTrue(stack0.equals(stack1));
     }
