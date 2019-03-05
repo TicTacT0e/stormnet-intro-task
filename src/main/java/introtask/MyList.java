@@ -26,11 +26,11 @@ public class MyList<T> {
     public void add(T item) {
         Node<T> oldLast = last;
         last = new Node<>(item, null);
-        if (oldLast != null) {
-            oldLast.setNext(last);
-        }
         if (isEmpty()) {
             first = last;
+        }
+        if (oldLast != null) {
+            oldLast.setNext(last);
         }
         size++;
     }
